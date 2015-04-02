@@ -1,6 +1,7 @@
 var handler = StripeCheckout.configure({
     key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
     image: '/img/documentation/checkout/marketplace.png',
+    //zipCode: true,
     token: function (token) {
         // Use the token to create the charge with a server-side script.
         // You can access the token ID with `token.id`
@@ -10,10 +11,10 @@ var handler = StripeCheckout.configure({
 $('#customButton').on('click', function (e) {
     // Open Checkout with further options
     handler.open({
-        name: 'Stripe.com',
-        description: '2 widgets',
+        name: 'Statesmen',
+        description: 'A better way for politics',
         amount: 2000,
-        zipcode:''
+        zipCode: true
     });
     e.preventDefault();
 });
