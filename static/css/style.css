@@ -1963,13 +1963,13 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   transition: border-color 0.25s, background-color 0.25s, color 0.25s;
 }
 .price-4 .plan:hover {
-  border-color: #1abc9c;
+  border-color: #34495e;
 }
 .price-4 .plan:hover .title,
 .price-4 .plan:hover .price,
 .price-4 .plan:hover .btn {
-  background: #1abc9c;
-  border-color: #1abc9c;
+  background: #34495e;
+  border-color: #34495e;
 }
 .price-4 .plan:hover .title,
 .price-4 .plan:hover .price {
@@ -1985,7 +1985,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   margin-top: 75px;
 }
 .price-4 .description-detail h6 {
-  color: #1abc9c;
+  color: #C0392Bt;
   font-size: 18px;
   font-weight: 700;
   margin-top: 10px;

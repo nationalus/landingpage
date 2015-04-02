@@ -17,6 +17,51 @@
     <!-- end -->
     <link rel="stylesheet" href="startup/common-files/css/animations.css">
     <link rel="stylesheet" href="static/css/style.css">
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <!--<script>-->
+    <!--var handler = StripeCheckout.configure({-->
+    <!--key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',-->
+    <!--image: '/img/documentation/checkout/marketplace.png',-->
+    <!--token: function (token) {-->
+    <!--// Use the token to create the charge with a server-side script.-->
+    <!--// You can access the token ID with `token.id`-->
+    <!--}-->
+    <!--});-->
+
+    <!--$('#customButton').on('click', function (e) {-->
+    <!--// Open Checkout with further options-->
+    <!--handler.open({-->
+    <!--name: 'Stripe.com',-->
+    <!--description: '2 widgets',-->
+    <!--amount: 2000,-->
+    <!--zipcode: '',-->
+    <!--email: ''-->
+    <!--});-->
+    <!--e.preventDefault();-->
+    <!--});-->
+
+    <!--// Close Checkout on page navigation-->
+    <!--$(window).on('popstate', function () {-->
+    <!--handler.close();-->
+    <!--});-->
+    <!--var stripeResponseHandler = function (status, response) {-->
+    <!--var $form = $('#payment-form');-->
+
+    <!--if (response.error) {-->
+    <!--// Show the errors on the form-->
+    <!--$form.find('.payment-errors').text(response.error.message);-->
+    <!--$form.find('button').prop('disabled', false);-->
+    <!--} else {-->
+    <!--// token contains id, last4, and card type-->
+    <!--var token = response.id;-->
+    <!--// Insert the token into the form so it gets submitted to the server-->
+    <!--$form.append($('<input type="hidden" name="stripeToken" />').val(token));-->
+    <!--// and submit-->
+    <!--$form.get(0).submit();-->
+    <!--}-->
+    <!--};-->
+    <!--</script>-->
 
     <title>Statesmen</title>
 </head>
@@ -36,7 +81,7 @@
                         </div>
                         <div class="btns">
                             <!--<a class="btn btn-large btn-primary" href="#">Join Startup Kit</a>-->
-                            <a class="btn btn-large btn-gray" href="#">Donate</a>
+                            <!--<a class="btn btn-large btn-gray" href="#">Donate</a>-->
                         </div>
                     </div>
                 </div>
@@ -106,7 +151,7 @@
                                     what
                                     matters most to you.
                                 </p>
-                                <a class="btn btn-clear" href="#">Donate</a>
+                                <!--<a class="btn btn-clear" href="#">Donate</a>-->
                             </div>
                             <div class="features-body">
                                 <h3>Congress of Ideas</h3>
@@ -114,13 +159,13 @@
                                 <p>Becoming a Statesmen means your vote and voice matters. Cast your vote on the issues
                                     that
                                     matter and voice your understanding for those who want to know.</p>
-                                <a class="btn btn-clear" href="#">Donate</a>
+                                <!--<a class="btn btn-clear" href="#">Donate</a>-->
                             </div>
                             <div class="features-body">
                                 <h3>Political Tools</h3>
 
                                 <p>Run a campaign the right way.</p>
-                                <a class="btn btn-clear" href="#">Donate</a>
+                                <!--<a class="btn btn-clear" href="#">Donate</a>-->
                             </div>
                         </div>
                     </div>
@@ -330,7 +375,7 @@
                 <div class="col-sm-5">
                     <div class="span5 plan">
                         <div class="title">Donations</div>
-                        <div class="price">Anything up to $199</div>
+                        <div class="price">Small, anything up to $199</div>
                         <div class="description">
                             <div class="description-box">
                                 <b>Be</b> bold
@@ -345,7 +390,7 @@
 
                             </div>
                         </div>
-                        <a class="btn btn-huge" href="#">Donate</a>
+                        <a class="btn btn-huge" id="customButton">Donate</a>
                     </div>
                 </div>
                 <div class="col-sm-6 col-sm-offset-1 description-detail">
@@ -479,7 +524,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-5">
-                    <p class="lead"><b></b> Statesmen</p>
+                    <p class="lead"><b></b>Statesmen</p>
                     Better tools, better politics.
                     <div class="social-btns">
                         <a href="#" class="social-btn-facebook"
@@ -517,16 +562,21 @@
                     </div>
                 </nav>
                 <div class="col-sm-2 buy-btn">
-                    <form action="" method="POST">
-                        <script
-                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-                                data-amount="2000"
-                                data-name="Statesmen"
-                                data-description="2 widgets ($20.00)"
-                                data-image="startup/common-files/img/statepaclogo.png">
-                        </script>
-                    </form>
+                    <!--<button id="customButton">Purchase</button>-->
+
+                    <script>
+
+                    </script>
+                    <!--<form action="" method="POST">-->
+                    <!--<script-->
+                    <!--src="https://checkout.stripe.com/checkout.js" class="stripe-button"-->
+                    <!--data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"-->
+                    <!--data-amount="2000"-->
+                    <!--data-name="Statesmen"-->
+                    <!--data-description="2 widgets ($20.00)"-->
+                    <!--data-image="startup/common-files/img/statepaclogo.png">-->
+                    <!--</script>-->
+                    <!--</form>-->
                     or <a href="#">Learn More</a>
                 </div>
             </div>
@@ -554,6 +604,7 @@
     <script src="startup/common-files/js/jquery.backgroundvideo.min.js"></script>
     <script src="startup/common-files/js/froogaloop.min.js"></script>
     <script src="startup/common-files/js/startup-kit.js"></script>
+    <script src="startup/common-files/js/stripejquery.js"></script>
 </div>
 </body>
 </html>
