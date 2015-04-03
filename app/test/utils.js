@@ -1,6 +1,6 @@
 'use strict'
 
-var config = require('../config'),
+var config = require('../config')(),
     mongoose = require('mongoose');
 
 beforeEach(function(done) {
