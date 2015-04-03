@@ -11,6 +11,7 @@ var DonationSchema = new Schema({
     amount : { 
         type : Number,
         required : true,  
+        min : 500,
         max : 19900
     },
     email : {
@@ -27,7 +28,9 @@ var DonationSchema = new Schema({
     } 
 });
 
+var DonationModel = mongoose.model('Donation', DonationSchema);
+
 module.exports = {
-    model : mongoose.model('Donation', DonationSchema)
+    model : DonationModel 
 };
     

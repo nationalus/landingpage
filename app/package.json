@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node-dev ./bin/www"
+    "start": "node-dev ./bin/www",
+    "test": "node_modules/.bin/mocha"
   },
   "dependencies": {
     "body-parser": "~1.10.2",
@@ -19,6 +20,8 @@
     "stripe": "^3.3.3"
   },
   "devDependencies": {
-    "node-dev": "^2.6.1"
+    "mocha": "^2.2.1",
+    "node-dev": "^2.6.1",
+    "should": "^5.2.0"
   }
 }
