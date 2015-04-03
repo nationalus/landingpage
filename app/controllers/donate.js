@@ -6,7 +6,6 @@ var config = require('../config')(),
 
 module.exports = {
     checkout : function(req, res, next) {
-        console.log(req.form);
         if (req.form.isValid) {
             var stripeToken = req.body.stripeToken,
                 amount = req.body.amount,
@@ -14,10 +13,10 @@ module.exports = {
                 email = req.body.email,
                 zipCode = req.body.zipCode;
 
-            var charge = stripe.charges.create({
+            stripe.charges.create({
                 amount : amount,
                 currency : currency,
-                source : stripeToken,
+                customer : stripeToken,
                 receipt_email : email,
                 description : 'Thank you for donating to Statesmen',
             }, function(err, charge) {
@@ -25,7 +24,7 @@ module.exports = {
                     if (err.rawType === 'invalid_request_error' ||
                         err.rawType === 'api_error') {
                         return res.status(400).send(err.message);
-                    } else if (err.type === 'card_error') {
+                    } else if (err.rawType === 'card_error') {
                         return res.status(400).send(err.code);
                     } else {
                         return res.status(500).send("Server Error"); 
@@ -36,7 +35,7 @@ module.exports = {
                     model.create({
                         amount : amount,
                         email : email,
-                        zipCode : zipCode
+                        zipcode : zipCode
                     }, function(err, donation) {
                         if (err || !donation) {
                             // Debug Log

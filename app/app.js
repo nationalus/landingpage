@@ -6,8 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes');
 var validator = require('express-validator');
+var mongoose = require('mongoose');
+var config = require('./config')();
 
 var app = express();
+
+//Database connection
+mongoose.connect(config.dbURI);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
