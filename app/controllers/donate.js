@@ -13,8 +13,8 @@ module.exports = {
                 email = req.body.email,
                 zipCode = req.body.zipCode,
                 name = req.body.name,
-                address = req.body.address;
-                occupation = req.body.occupation;
+                address = req.body.address,
+                occupation = req.body.occupation,
                 employer = req.body.employer;
 
             stripe.charges.create({
