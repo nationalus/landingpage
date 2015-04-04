@@ -11,6 +11,8 @@ var form = form(
     field('amount').trim().isInt().toInt(),
     field('currency').trim().isString().equals('usd'),
     field('email').trim().isEmail().required(),
+    field('address').trim().required(),
+    field('name').trim().required(),
     field('zipCode').trim().required().notEmpty()
 );
 

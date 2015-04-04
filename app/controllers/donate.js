@@ -11,7 +11,9 @@ module.exports = {
                 amount = req.body.amount,
                 currency = req.body.currency,
                 email = req.body.email,
-                zipCode = req.body.zipCode;
+                zipCode = req.body.zipCode,
+                name = req.body.name,
+                address = req.body.address;
 
             stripe.charges.create({
                 amount : amount,
@@ -35,6 +37,8 @@ module.exports = {
                     model.create({
                         amount : amount,
                         email : email,
+                        name : req.body.name,
+                        address : req.body.address,
                         zipcode : zipCode
                     }, function(err, donation) {
                         if (err || !donation) {

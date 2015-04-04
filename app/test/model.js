@@ -2,16 +2,40 @@
 
 var dbURI = require('../config').testDB,
     mongoose = require('mongoose'),
-    dbCleaner = require('./utils'),
     should = require('should'),
     donationModel = require('../models/donations').model;
 
 describe('Donation Model', function() {
+    beforeEach(function(done) {
+        function clearDB() {
+            for (var i in mongoose.connection.collections) {
+                mongoose.connection.collections[i].remove(function() {});
+            }
+            return done();
+        }
+        
+        if (mongoose.connection.readyState === 0) {
+            mongoose.connect(config.dbURI, function(err) {
+                if (err) {
+                    throw err;
+                }
+                return clearDB();
+            });
+        } else {
+            return clearDB();
+        }
+    });
+    afterEach(function(done) {
+        mongoose.disconnect();
+        return done();
+    });
     describe('Create', function() {
         it('Creates a new donation', function(done) {
             donationModel.create({
                 amount : 1000,
                 email : 'grim.reaper@reaper.com',
+                name : 'Grim Reaper',
+                address : 'Death Valley, CA 1234',
                 zipcode : '12345' 
             }, function(err, created) {
                 should.not.exist(err);
