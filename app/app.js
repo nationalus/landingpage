@@ -8,6 +8,7 @@ var routes = require('./routes');
 var validator = require('express-validator');
 var mongoose = require('mongoose');
 var config = require('./config')();
+var compression = require('compression');
 
 var app = express();
 
@@ -20,7 +21,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
+app.use(compression());
+
 
 app.use(routes);
 
