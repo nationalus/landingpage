@@ -30,6 +30,10 @@ var DonationSchema = new Schema({
         type : String,
         required : true
     },
+    created : {
+        type : Date,
+        default : Date.now()
+    },
     address : {
         type : String,
         required : true
