@@ -4,11 +4,11 @@ var supertest = require('supertest'),
 
 describe('POST /donate', function() {
     it('Donate Endpoint', function(done) {
-        done();
-       /* supertest(app)
+        return done();
+        supertest(app)
         .post('/donate')
         .send({
-            stripeToken : 'asdfghjkl',
+            source : 'asdfghjkl',
             amount : 1000,
             email : 'grim.reaper@reaper.com',
             zipCode : '12345'
@@ -20,7 +20,7 @@ describe('POST /donate', function() {
                 return done(err);
             }
             done();
-        });*/
+        });
     });  
 });
 

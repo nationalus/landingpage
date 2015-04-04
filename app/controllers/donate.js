@@ -7,18 +7,20 @@ var config = require('../config')(),
 module.exports = {
     checkout : function(req, res, next) {
         if (req.form.isValid) {
-            var stripeToken = req.body.stripeToken,
+            var source = req.body.source,
                 amount = req.body.amount,
                 currency = req.body.currency,
                 email = req.body.email,
                 zipCode = req.body.zipCode,
                 name = req.body.name,
                 address = req.body.address;
+                occupation = req.body.occupation;
+                employer = req.body.employer;
 
             stripe.charges.create({
                 amount : amount,
                 currency : currency,
-                customer : stripeToken,
+                source : source,
                 receipt_email : email,
                 description : 'Thank you for donating to Statesmen',
             }, function(err, charge) {
@@ -29,7 +31,8 @@ module.exports = {
                     } else if (err.rawType === 'card_error') {
                         return res.status(400).send(err.code);
                     } else {
-                        return res.status(500).send("Server Error"); 
+                        return res.status(500).send("Unknown Error recieved from " + 
+                            "stripe"); 
                     }
                 } else if (!charge) {
                     return res.status(500).send("Server Error");
@@ -39,7 +42,9 @@ module.exports = {
                         email : email,
                         name : req.body.name,
                         address : req.body.address,
-                        zipcode : zipCode
+                        zipcode : zipCode,
+                        occupation : occupation,
+                        employer : employer
                     }, function(err, donation) {
                         if (err || !donation) {
                             // Debug Log

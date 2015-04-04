@@ -34,6 +34,14 @@ var DonationSchema = new Schema({
         type : Date,
         default : Date.now()
     },
+    employer : {
+        type : String,
+        required : true
+    },
+    occupation : {
+        type : String,
+        required : true
+    },
     address : {
         type : String,
         required : true
