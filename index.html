@@ -21,7 +21,7 @@
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script type="text/javascript">
         // This identifies your website in the createToken call below
-        Stripe.setPublishableKey('pk_test_bOHcMClPjvhXPod62NShnyh2');
+        Stripe.setPublishableKey('sk_test_pnRBYcLcnwtEjDB5NEvrwOnm');
         // ...
     </script>
 
@@ -140,22 +140,8 @@
             <div class="row">
                 <div class="col-sm-5">
                     <div class="span5 plan">
-                        <div role="presentation" class="dropdown">
-                            <a class="title dropdown-toggle btn btn-huge" data-toggle="dropdown" href="#"
-                               aria-expanded="false">
-                                Donations
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <a class="btn btn-default" id="three">$3</a>
-                                <a class="btn btn-default" id="ten">$10</a>
-                                <a class="btn btn-default" id="twenty">$20</a>
-                                <a class="btn btn-default" id="fifty">$50</a>
-                                <a class="btn btn-default" id="oneHundred">$100</a>
-                                <a class="btn btn-default" id="oneHundredFifty">$150</a>
-                                <a class="btn btn-default" id="max">$199</a>
-                            </ul>
-                        </div>
-
+                        <div class="title">Donations</div>
+                        <div class="price">Small, anything up to $199</div>
                         <div class="description">
                             <div class="description-box">
                                 <b>Be</b> bold
@@ -170,27 +156,10 @@
                                 <a class="conditions" id="thisButton">Terms & Conditions</a>
                             </div>
                         </div>
-                        <!--<a class="btn btn-huge" data-toggle="tooltip" data-placement="bottom"-->
-                        <!--title="By donating, you accept our Terms & Conditions. Click to donate.">Donate</a>-->
-
+                        <a class="btn btn-huge" data-toggle="modal" data-placement="bottom"
+                           title="By donating, you accept our Terms & Conditions. Click to donate."
+                           data-target="#payments">Donate</a>
                     </div>
-                    <div>
-                        <!--<a class="btn btn-default" id="five">$5</a>-->
-                        <!--<a class="btn btn-default" id="ten">$10</a>-->
-                        <!--<a class="btn btn-default" id="twenty" data-toggle="tooltip" data-placement="bottom"-->
-                        <!--title="By donating, you accept our Terms & Conditions">$20</a>-->
-                        <!--<a class="btn btn-default" id="fifty" data-toggle="tooltip" data-placement="bottom"-->
-                        <!--title="By donating, you accept our Terms & Conditions">$50</a>-->
-                        <!--<a class="btn btn-default" id="oneHundred" data-toggle="tooltip" data-placement="bottom"-->
-                        <!--title="By donating, you accept our Terms & Conditions">$100</a>-->
-                        <!--<a class="btn btn-default" id="oneHundredFifty" data-toggle="tooltip" data-placement="bottom"-->
-                        <!--title="By donating, you accept our Terms & Conditions">$150</a>-->
-                        <!--<a class="btn btn-default" id="max" data-toggle="tooltip" data-placement="bottom"-->
-                        <!--title="By donating, you accept our Terms & Conditions">$199</a>-->
-                    </div>
-                    <!--<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom"-->
-                    <!--title="Tooltip on bottom">Tooltip on bottom-->
-                    <!--</button>-->
                 </div>
                 <div class="col-sm-6 col-sm-offset-1 description-detail">
                     <div class="row">
@@ -442,7 +411,114 @@
         </div>
     </div>
 </div>
+<!-- Button trigger modal -->
 
+
+<!-- Modal -->
+<div class="modal fade" id="payments" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="myModalLabelTwo">Donations</h3>
+            </div>
+            <div class="modal-body">
+                <form action="https://statesmen.herokuapp.com/donate" method="POST" id="payment-form">
+                    <span class="payment-errors"></span>
+
+                    <div class="form-row">
+                        <label>
+                            <span>Cardholder Name</span>
+                            <input type="text" size="15" data-stripe="name"/>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label>
+                            <span>Email Address</span>
+                            <input type="text" size="20" data-stripe="email"/>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label>
+                            <span>Mailing Address</span>
+                            <input type="text" size="20" data-stripe="address"/>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label>
+                            <span>Occupation</span>
+                            <input type="text" size="20" data-stripe="occupation"/>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label>
+                            <span>Employer</span>
+                            <input type="text" size="20" data-stripe="employer"/>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label>
+                            <span>Zip Code</span>
+                            <input type="number" size="20" data-stripe="zipCode"/>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label>
+                            <span>Card Number</span>
+                            <input type="text" size="20" data-stripe="number"/>
+                        </label>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            <span>CVC</span>
+                            <input type="text" size="4" data-stripe="cvc"/>
+                        </label>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            <span>Expiration (MM/YYYY)</span>
+                            <input type="text" size="2" data-stripe="exp-month"/>
+                        </label>
+                        <span> / </span>
+                        <input type="text" size="4" data-stripe="exp-year"/>
+                    </div>
+                    <div class="form-row">
+                        <label>
+                            <span>Amount</span>
+                            <input type="number" size="2" data-stripe="amount"/>
+                        </label>
+                        <span> / </span>
+                        <input type="text" size="4" data-stripe="exp-year"/>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-body">
+                <h4>Terms & Conditions</h4>
+                By contributing, I certify that: 1. This contribution is made from my own funds – not those of
+                another person or entity.
+                2. I am not a foreign national, government contractor, national bank, or corporation chartered
+                by
+                an act of
+                Congress.
+
+                Statesmen is registered with the FEC as an independent expenditure committee.
+                Federal law requires us to use our best efforts to collect and report the name, mailing address,
+                occupation and name of employer of individuals whose contributions exceed $200 in a calendar
+                year.
+                Contributions or gifts are not tax deductible.
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                <button type="submit">Submit Payment</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--<div class="modal fade" id="choices" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"-->
 <!--aria-hidden="true">-->
@@ -473,16 +549,23 @@
 
 </body>
 <script>
+    //    $('#payment-form').click(function () {
+    //        $('#myModal').modal({
+    //            show: true
+    //        });
+    //    });
+</script>
+<script>
     $('#thisButton').click(function () {
         $('#myModal').modal({
             show: true
         });
     });
-    $('paymentChoice').click(function(){
+    $('paymentChoice').click(function () {
         $('#myModal').modal({
             show: false
         });
-        
+
     });
 </script>
 <!--<script>-->
@@ -495,5 +578,206 @@
 <script>$(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#payment-form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function (validator, form, submitButton) {
+                // createToken returns immediately - the supplied callback submits the form if there are no errors
+                Stripe.card.createToken({
+                    number: $('.card-number').val(),
+                    cvc: $('.card-cvc').val(),
+                    exp_month: $('.card-expiry-month').val(),
+                    exp_year: $('.card-expiry-year').val(),
+                    name: $('.card-holder-name').val(),
+                    address_line1: $('.address').val(),
+                    address_city: $('.city').val(),
+                    address_zip: $('.zip').val(),
+                    address_state: $('.state').val(),
+                    address_country: $('.country').val()
+                }, stripeResponseHandler);
+                return false; // submit from callback
+            },
+            fields: {
+                street: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The street is required and cannot be empty'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 96,
+                            message: 'The street must be more than 6 and less than 96 characters long'
+                        }
+                    }
+                },
+                city: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The city is required and cannot be empty'
+                        }
+                    }
+                },
+                zip: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The zip is required and cannot be empty'
+                        },
+                        stringLength: {
+                            min: 3,
+                            max: 9,
+                            message: 'The zip must be more than 3 and less than 9 characters long'
+                        }
+                    }
+                },
+                email: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The email address is required and can\'t be empty'
+                        },
+                        emailAddress: {
+                            message: 'The input is not a valid email address'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 65,
+                            message: 'The email must be more than 6 and less than 65 characters long'
+                        }
+                    }
+                },
+                cardholdername: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The card holder name is required and can\'t be empty'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 70,
+                            message: 'The card holder name must be more than 6 and less than 70 characters long'
+                        }
+                    }
+                },
+                cardnumber: {
+                    selector: '#cardnumber',
+                    validators: {
+                        notEmpty: {
+                            message: 'The credit card number is required and can\'t be empty'
+                        },
+                        creditCard: {
+                            message: 'The credit card number is invalid'
+                        },
+                    }
+                },
+                expMonth: {
+                    selector: '[data-stripe="exp-month"]',
+                    validators: {
+                        notEmpty: {
+                            message: 'The expiration month is required'
+                        },
+                        digits: {
+                            message: 'The expiration month can contain digits only'
+                        },
+                        callback: {
+                            message: 'Expired',
+                            callback: function (value, validator) {
+                                value = parseInt(value, 10);
+                                var year = validator.getFieldElements('expYear').val(),
+                                        currentMonth = new Date().getMonth() + 1,
+                                        currentYear = new Date().getFullYear();
+                                if (value < 0 || value > 12) {
+                                    return false;
+                                }
+                                if (year == '') {
+                                    return true;
+                                }
+                                year = parseInt(year, 10);
+                                if (year > currentYear || (year == currentYear && value > currentMonth)) {
+                                    validator.updateStatus('expYear', 'VALID');
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+                },
+                expYear: {
+                    selector: '[data-stripe="exp-year"]',
+                    validators: {
+                        notEmpty: {
+                            message: 'The expiration year is required'
+                        },
+                        digits: {
+                            message: 'The expiration year can contain digits only'
+                        },
+                        callback: {
+                            message: 'Expired',
+                            callback: function (value, validator) {
+                                value = parseInt(value, 10);
+                                var month = validator.getFieldElements('expMonth').val(),
+                                        currentMonth = new Date().getMonth() + 1,
+                                        currentYear = new Date().getFullYear();
+                                if (value < currentYear || value > currentYear + 100) {
+                                    return false;
+                                }
+                                if (month == '') {
+                                    return false;
+                                }
+                                month = parseInt(month, 10);
+                                if (value > currentYear || (value == currentYear && month > currentMonth)) {
+                                    validator.updateStatus('expMonth', 'VALID');
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+                },
+                cvv: {
+                    selector: '#cvv',
+                    validators: {
+                        notEmpty: {
+                            message: 'The cvv is required and can\'t be empty'
+                        },
+                        cvv: {
+                            message: 'The value is not a valid CVV',
+                            creditCardField: 'cardnumber'
+                        }
+                    }
+                },
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    // this identifies your website in the createToken call below
+    Stripe.setPublishableKey('<Stripe Publishable Key>');
+
+    function stripeResponseHandler(status, response) {
+        if (response.error) {
+            // re-enable the submit button
+            $('.submit-button').removeAttr("disabled");
+            // show hidden div
+            document.getElementById('a_x200').style.display = 'block';
+            // show the errors on the form
+            $(".payment-errors").html(response.error.message);
+        } else {
+            var form$ = $("#payment-form");
+            // token contains id, last4, and card type
+            var token = response['id'];
+            // insert the token into the form so it gets submitted to the server
+            form$.append("<input type='hidden' name='stripeToken' value='" + token + "' />");
+            // and submit
+            form$.get(0).submit();
+        }
+    }
+
 </script>
 </html>
