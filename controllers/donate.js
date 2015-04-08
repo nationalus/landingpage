@@ -7,8 +7,7 @@ var config = require('../config')(),
 module.exports = {
     checkout : function(req, res, next) {
         if (req.form.isValid) {
-            console.log(req.body.stripeToken);
-            var source = req.body.stripeToken.toString(),
+            var source = req.body.stripeToken,
                 amount = req.body.amount,
                 currency = req.body.currency,
                 email = req.body.email,
@@ -51,7 +50,6 @@ module.exports = {
                             // Debug Log
                             return res.status(500).send("Server Error");
                         } else {
-                            console.log(donation);
                             return res.status(200).send("Success");
                         }
                     });

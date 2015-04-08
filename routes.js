@@ -7,8 +7,14 @@ var express = require('express'),
     router = express.Router();
 
 var form = form(
-    field('amount').trim().isInt().toInt(),
-    field('currency').trim().isString().equals('usd'),
+    field('stripeToken').required().trim().isString().toString(),
+    field('amount').trim().isInt().toInt()
+    .custom(function(amount) {
+        if (amount < 300) {
+            throw new Error("Amount was too small");
+        }
+    }),
+    field('currency').required().trim().isString().equals('usd'),
     field('email').trim().isEmail().required(),
     field('address').trim().required(),
     field('name').trim().required(),
