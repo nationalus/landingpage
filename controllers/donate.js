@@ -7,7 +7,8 @@ var config = require('../config')(),
 module.exports = {
     checkout : function(req, res, next) {
         if (req.form.isValid) {
-            var source = req.body.source,
+            console.log(req.body.stripeToken);
+            var source = req.body.stripeToken.toString(),
                 amount = req.body.amount,
                 currency = req.body.currency,
                 email = req.body.email,
@@ -20,9 +21,10 @@ module.exports = {
             stripe.charges.create({
                 amount : amount,
                 currency : currency,
-                source : source,
+                card : source, //tok_15pAQsFxptvbym7urk8GnB8N
+                //card : 'tok_15pAo9DNONxTvb1EjCP5CltP',
                 receipt_email : email,
-                description : 'Thank you for donating to Statesmen',
+                description : 'Thank you for donating to Statesmen'
             }, function(err, charge) {
                 if (err) {
                     if (err.rawType === 'invalid_request_error' ||
