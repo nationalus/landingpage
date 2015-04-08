@@ -21,8 +21,7 @@ module.exports = {
             stripe.charges.create({
                 amount : amount,
                 currency : currency,
-                card : source, //tok_15pAQsFxptvbym7urk8GnB8N
-                //card : 'tok_15pAo9DNONxTvb1EjCP5CltP',
+                card : source, 
                 receipt_email : email,
                 description : 'Thank you for donating to Statesmen'
             }, function(err, charge) {
@@ -52,6 +51,7 @@ module.exports = {
                             // Debug Log
                             return res.status(500).send("Server Error");
                         } else {
+                            console.log(donation);
                             return res.status(200).send("Success");
                         }
                     });
