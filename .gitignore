@@ -1,6 +1,6 @@
 **/node_modules
 **/*.pem
 **/*.swp
-.idea
-npm-debug.log
-data/
+**/.idea
+**/npm-debug.log
+**/data
