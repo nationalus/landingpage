@@ -1137,7 +1137,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   margin-left: 0;
 }
 .content-24 .features.features-clear .features-header .box.active {
-  color: #27ae60;
+  color: #C0392B;
 }
 .content-24 .features.features-clear .features-header .box [class*="fui-"] {
   display: block;
@@ -1952,7 +1952,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   background: #1abc9c;
 }
 .price-4 .plan .btn:active {
-  background: #16a085!important;
+  background: #7f8c8d!important;
 }
 .price-4 .plan,
 .price-4 .plan .title,
@@ -2387,4 +2387,13 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 }
 .footer-1 .fb_iframe_widget {
   vertical-align: top;
+}
+.conditions {
+  color: #C0392B;
+}
+
+.smimage {
+  margin-left: -15px;
+  margin-right: -15px;
+  height: 1000px;
 }
