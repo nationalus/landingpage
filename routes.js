@@ -19,10 +19,12 @@ var form = form(
             throw new Error("Amount was too small");
         }
     }),
-    field('currency').required().trim().isString().equals('usd'),
     field('email').trim().isEmail().required(),
-    field('address').trim().required(),
-    field('name').trim().required(),
+    field('state').trim().isString().required(),
+    field('city').required().trim().isString(),
+    field('street').required().trim().isString(),
+    field('first-name').trim().required(),
+    field('last-name').trim().required(),
     field('occupation').trim().isString().required(),
     field('employer').trim().isString().required(),
     field('zipCode').trim().required().notEmpty()

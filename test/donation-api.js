@@ -27,9 +27,11 @@ describe('Endpoint Testing', function() {
             .send({
                 stripeToken : token.id,
                 amount : 1000,
-                currency : 'usd',
-                address : 'Diagon Alley',
-                name : 'Grim Reaper',
+                street : 'Diagon Alley',
+                state : 'AZ',
+                city : 'Tempe',
+                'first-name' : 'Grim',
+                'last-name' : 'Reaper',
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
                 email : 'grim.reaper@reaper.com',
@@ -70,49 +72,11 @@ describe('Endpoint Testing', function() {
                 stripeToken : token.id,
                 amount : 299,
                 currency : 'usd',
-                address : 'Diagon Alley',
-                name : 'Grim Reaper',
-                occupation : 'Reaper of Souls',
-                employer : 'Fate',
-                email : 'grim.reaper@reaper.com',
-                zipCode : '12345'
-            })
-            .expect(400)
-            .end(function(err, res) {
-                if (err) {
-                    logger.error(err);
-                    return done(err);
-                }
-                return done();
-            });
-        }).catch(function(err) {
-            logger.error(err);
-            return done(err);
-        });
-    });  
-    it('Donation without currency', function(done) {
-        this.timeout(4000);
-        new Promise(function(resolve, reject) {
-            stripe.tokens.create({
-                card : {
-                    'number' : '4242424242424242',
-                    'exp_month' : 12,
-                    'exp_year' : 2016,
-                    'cvc' : '123'
-                }
-            }, function(err, token) {
-                if (err) return reject(err);
-                return resolve(token);
-            })
-        })
-        .then(function(token) {
-            supertest(app)
-            .post('/donate')
-            .send({
-                stripeToken : token.id,
-                amount : 1000,
-                address : 'Diagon Alley',
-                name : 'Grim Reaper',
+                street : 'Diagon Alley',
+                state : 'AZ',
+                city : 'Tempe',
+                'first-name' : 'Grim',
+                'last-name' : 'Reaper',
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
                 email : 'grim.reaper@reaper.com',
@@ -153,7 +117,8 @@ describe('Endpoint Testing', function() {
                 stripeToken : token.id,
                 currency : 'usd',
                 amount : 1000,
-                name : 'Grim Reaper',
+                'first-name' : 'Grim',
+                'last-name' : 'Reaper',
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
                 email : 'grim.reaper@reaper.com',
@@ -236,7 +201,8 @@ describe('Endpoint Testing', function() {
                 amount : 1000,
                 currency : 'usd',
                 address : 'Diagon Alley',
-                name : 'Grim Reaper',
+                'first-name' : 'Grim',
+                'last-name' : 'Reaper',
                 employer : 'Fate',
                 email : 'grim.reaper@reaper.com',
                 zipCode : '12345'
@@ -277,7 +243,8 @@ describe('Endpoint Testing', function() {
                 amount : 1000,
                 currency : 'usd',
                 address : 'Diagon Alley',
-                name : 'Grim Reaper',
+                'first-name' : 'Grim',
+                'last-name' : 'Reaper',
                 occupation : 'Reaper of Souls',
                 email : 'grim.reaper@reaper.com',
                 zipCode : '12345'
@@ -318,7 +285,8 @@ describe('Endpoint Testing', function() {
                 amount : 1000,
                 currency : 'usd',
                 address : 'Diagon Alley',
-                name : 'Grim Reaper',
+                'first-name' : 'Grim',
+                'last-name' : 'Reaper',
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
                 email : 'grim.reaper@',
@@ -360,7 +328,8 @@ describe('Endpoint Testing', function() {
                 amount : 1000,
                 currency : 'usd',
                 address : 'Diagon Alley',
-                name : 'Grim Reaper',
+                'first-name' : 'Grim',
+                'last-name' : 'Reaper',
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
                 zipCode : '12345'
@@ -400,8 +369,11 @@ describe('Endpoint Testing', function() {
                 stripeToken : token.id,
                 amount : 1000,
                 currency : 'usd',
-                address : 'Diagon Alley',
-                name : 'Grim Reaper',
+                city : 'asdf',
+                street : 'asdf',
+                state : 'asf',
+                'first-name' : 'Grim',
+                'last-name' : 'Reaper',
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
                 email : 'grim.reaper@reaper.com',
@@ -443,7 +415,8 @@ describe('Endpoint Testing', function() {
                 amount : 1000,
                 currency : 'usd',
                 address : 'Diagon Alley',
-                name : 'Grim Reaper',
+                'first-name' : 'Grim',
+                'last-name' : 'Reaper',
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
                 email : 'grim.reaper@reaper.com'
@@ -483,7 +456,8 @@ describe('Endpoint Testing', function() {
                 amount : 1000,
                 currency : 'usd',
                 address : 'Diagon Alley',
-                name : 'Grim Reaper',
+                'first-name' : 'Grim',
+                'last-name' : 'Reaper',
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
                 email : 'grim.reaper@reaper.com',
