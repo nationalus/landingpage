@@ -7,7 +7,6 @@ var config = require('../config')(),
 module.exports = {
     checkout : function(req, res, next) {
         if (req.form.isValid) {
-            console.log(req.body.stripeToken);
             var source = req.body.stripeToken.toString(),
                 amount = req.body.amount,
                 currency = req.body.currency,
@@ -28,18 +27,14 @@ module.exports = {
                 if (err) {
                     if (err.rawType === 'invalid_request_error' ||
                         err.rawType === 'api_error') {
-                        console.log(err);
                         return res.status(400).send(err.message);
                     } else if (err.rawType === 'card_error') {
-                        console.log(err);
                         return res.status(400).send(err.code);
                     } else {
-                        console.log(err);
                         return res.status(500).send("Unknown Error recieved from " + 
                             "stripe"); 
                     }
                 } else if (!charge) {
-                    console.log(err);
                     return res.status(500).send("Server Error");
                 } else {
                     model.create({
@@ -53,10 +48,8 @@ module.exports = {
                     }, function(err, donation) {
                         if (err || !donation) {
                             // Debug Log
-                            console.log(err);
                             return res.status(500).send("Server Error");
                         } else {
-                            console.log(donation);
                             return res.status(200).send("Success");
                         }
                     });
