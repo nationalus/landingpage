@@ -2,6 +2,7 @@
 
 var config = require('../config')(),
     stripe = require('stripe')(config.secretKey),
+    logger = config.logger,
     model = require('../models/donations').model;
 
 module.exports = {
@@ -27,14 +28,18 @@ module.exports = {
                 if (err) {
                     if (err.rawType === 'invalid_request_error' ||
                         err.rawType === 'api_error') {
+                        logger.error(err);
                         return res.status(400).send(err.message);
                     } else if (err.rawType === 'card_error') {
+                        logger.error(err);
                         return res.status(400).send(err.code);
                     } else {
+                        logger.error(err);
                         return res.status(500).send("Unknown Error recieved from " + 
                             "stripe"); 
                     }
                 } else if (!charge) {
+                    logger.error(err);
                     return res.status(500).send("Server Error");
                 } else {
                     model.create({
@@ -47,7 +52,7 @@ module.exports = {
                         employer : employer
                     }, function(err, donation) {
                         if (err || !donation) {
-                            // Debug Log
+                            logger.error(err);
                             return res.status(500).send("Server Error");
                         } else {
                             return res.status(200).send("Success");
@@ -56,6 +61,7 @@ module.exports = {
                 }
             });
         } else {
+            logger.error(err);
             res.status(400).send("Invalid Form");
         }
     }
