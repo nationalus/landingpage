@@ -10,17 +10,19 @@ module.exports = {
         if (req.form.isValid) {
             var source = req.body.stripeToken,
                 amount = req.body.amount,
-                currency = req.body.currency,
                 email = req.body.email,
                 zipCode = req.body.zipCode,
-                name = req.body.name,
-                address = req.body.address,
+                firstName = req.body['first-name'],
+                lastName = req.body['last-name'],
+                city = req.body.city,
+                street = req.body.street,
+                state = req.body.state,
                 occupation = req.body.occupation,
                 employer = req.body.employer;
 
             stripe.charges.create({
                 amount : amount,
-                currency : currency,
+                currency : 'usd',
                 card : source, 
                 receipt_email : email,
                 description : 'Thank you for donating to Statesmen'
@@ -45,8 +47,13 @@ module.exports = {
                     model.create({
                         amount : amount,
                         email : email,
-                        name : req.body.name,
-                        address : req.body.address,
+                        firstName : firstName,
+                        lastName : lastName,
+                        address : {
+                            street : street,
+                            city : city,
+                            state : state
+                        },
                         zipcode : zipCode,
                         occupation : occupation,
                         employer : employer
@@ -61,7 +68,7 @@ module.exports = {
                 }
             });
         } else {
-            logger.error(err);
+            logger.debug(req.form);
             res.status(400).send("Invalid Form");
         }
     }

@@ -12,8 +12,13 @@ describe('Donation Model', function() {
             donationModel.create({
                 amount : 1000,
                 email : 'grim.reaper@reaper.com',
-                name : 'Grim Reaper',
-                address : 'Death Valley, CA 1234',
+                firstName : 'Grim',
+                lastName : 'Reaper',
+                address : {
+                    city : 'Death Valley',
+                    state :  'CA',
+                    street : 'Silver Lane'
+                },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
                 zipcode : '12345' 
@@ -31,12 +36,17 @@ describe('Donation Model', function() {
     describe('Invalid', function() {
         it('Attempts to create a donation without amount', function(done) {
             donationModel.create({
-                name : 'Grim Reaper',
-                address : 'Diagon Alley',
                 email : 'grim.reaper@reaper.com',
+                firstName : 'Grim',
+                lastName : 'Reaper',
+                address : {
+                    city : 'Death Valley',
+                    state :  'CA',
+                    street : 'Silver Lane'
+                },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
-                zipcode : '12345'
+                zipcode : '12345' 
             }, function(err, created) {
                 should.not.exist(created);
                 should.exist(err);
@@ -45,9 +55,14 @@ describe('Donation Model', function() {
         });
         it('Attempts to create a donation without email', function(done) {
             donationModel.create({
-                name : 'Grim Reaper',
-                address : 'Diagon Alley',
                 amount : 1000,
+                firstName : 'Grim',
+                lastName : 'Reaper',
+                address : {
+                    city : 'Death Valley',
+                    state :  'CA',
+                    street : 'Silver Lane'
+                },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
                 zipcode : '12345' 
@@ -59,12 +74,17 @@ describe('Donation Model', function() {
         });
         it('Attempts to create a donation without zipcode', function(done) {
             donationModel.create({
-                name : 'Grim Reaper',
-                address : 'Diagon Alley',
                 amount : 1000,
+                email : 'grim.reaper@reaper.com',
+                firstName : 'Grim',
+                lastName : 'Reaper',
+                address : {
+                    city : 'Death Valley',
+                    state :  'CA',
+                    street : 'Silver Lane'
+                },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
-                email : 'grim.reaper@reaper.com'
             }, function(err, created) {
                 should.exist(err);
                 should.not.exist(created);
@@ -90,10 +110,15 @@ describe('Donation Model', function() {
         it('Attempts to create a donation with invalid email', 
             function(done) {
             donationModel.create({
-                name : 'Grim Reaper',
-                address : 'Diagon Alley',
                 amount : 1000,
-                email : '@reaper.com',
+                email : 'grim.reaper@.com',
+                firstName : 'Grim',
+                lastName : 'Reaper',
+                address : {
+                    city : 'Death Valley',
+                    state :  'CA',
+                    street : 'Silver Lane'
+                },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
                 zipcode : '12345' 
@@ -106,10 +131,15 @@ describe('Donation Model', function() {
         it('Attempts to create a donation with invalid email', 
             function(done) {
             donationModel.create({
-                name : 'Grim Reaper',
-                address : 'Diagon Alley',
                 amount : 1000,
                 email : 'grim.reaperreaper.com',
+                firstName : 'Grim',
+                lastName : 'Reaper',
+                address : {
+                    city : 'Death Valley',
+                    state :  'CA',
+                    street : 'Silver Lane'
+                },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
                 zipcode : '12345' 
@@ -122,13 +152,18 @@ describe('Donation Model', function() {
         it('Attempts to create a donation with invalid zipcode', 
             function(done) {
             donationModel.create({
-                name : 'Grim Reaper',
-                address : 'Diagon Alley',
                 amount : 1000,
                 email : 'grim.reaper@reaper.com',
+                firstName : 'Grim',
+                lastName : 'Reaper',
+                address : {
+                    city : 'Death Valley',
+                    state :  'CA',
+                    street : 'Silver Lane'
+                },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
-                zipcode : '1f345' 
+                zipcode : 'a2345' 
             }, function(err, created) {
                 should.exist(err);
                 should.not.exist(created);
@@ -138,13 +173,18 @@ describe('Donation Model', function() {
         it('Attempts to create a donation with invalid zipcode', 
             function(done) {
             donationModel.create({
-                name : 'Grim Reaper',
-                address : 'Diagon Alley',
                 amount : 1000,
                 email : 'grim.reaper@reaper.com',
+                firstName : 'Grim',
+                lastName : 'Reaper',
+                address : {
+                    city : 'Death Valley',
+                    state :  'CA',
+                    street : 'Silver Lane'
+                },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
-                zipcode : '1345' 
+                zipcode : '2345' 
             }, function(err, created) {
                 should.exist(err);
                 should.not.exist(created);
@@ -154,9 +194,10 @@ describe('Donation Model', function() {
         it('Attempts to create a donation without address', 
             function(done) {
             donationModel.create({
-                name : 'Grim Reaper',
                 amount : 1000,
                 email : 'grim.reaper@reaper.com',
+                firstName : 'Grim',
+                lastName : 'Reaper',
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
                 zipcode : '12345' 
@@ -169,10 +210,15 @@ describe('Donation Model', function() {
         it('Attempts to create a donation without employer', 
             function(done) {
             donationModel.create({
-                name : 'Grim Reaper',
                 amount : 1000,
-                address : 'Diagon Alley',
                 email : 'grim.reaper@reaper.com',
+                firstName : 'Grim',
+                lastName : 'Reaper',
+                address : {
+                    city : 'Death Valley',
+                    state :  'CA',
+                    street : 'Silver Lane'
+                },
                 occupation : 'Reaper of Souls',
                 zipcode : '12345' 
             }, function(err, created) {
@@ -184,10 +230,15 @@ describe('Donation Model', function() {
         it('Attempts to create a donation without occupation', 
             function(done) {
             donationModel.create({
-                name : 'Grim Reaper',
                 amount : 1000,
-                address : 'Diagon Alley',
                 email : 'grim.reaper@reaper.com',
+                firstName : 'Grim',
+                lastName : 'Reaper',
+                address : {
+                    city : 'Death Valley',
+                    state :  'CA',
+                    street : 'Silver Lane'
+                },
                 employer : 'Fate',
                 zipcode : '12345' 
             }, function(err, created) {

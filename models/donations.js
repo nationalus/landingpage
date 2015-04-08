@@ -26,7 +26,11 @@ var DonationSchema = new Schema({
         required : true,
         match : zipcodeRegex
     },
-    name : {
+    firstName : {
+        type : String,
+        required : true
+    },
+    lastName : {
         type : String,
         required : true
     },
@@ -43,8 +47,18 @@ var DonationSchema = new Schema({
         required : true
     },
     address : {
-        type : String,
-        required : true
+        street : {
+            type : String,
+            required : true
+        },
+        city : {
+            type : String,
+            required : true
+        },
+        state : {
+            type : String,
+            required : true
+        }
     } 
 });
 
