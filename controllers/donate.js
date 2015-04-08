@@ -22,7 +22,7 @@ module.exports = {
                 currency : currency,
                 source : source,
                 receipt_email : email,
-                description : 'Thank you for donating to Statesmen',
+                description : 'Thank you for donating to Statesmen'
             }, function(err, charge) {
                 if (err) {
                     if (err.rawType === 'invalid_request_error' ||
