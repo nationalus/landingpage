@@ -7,7 +7,7 @@ var express = require('express'),
     router = express.Router();
 
 var form = form(
-    field('stripeToken').required().trim().isString(),
+    field('stripeToken').required().trim().isString().toString(),
     field('amount').trim().isInt().toInt()
     .custom(function(amount) {
         if (amount < 300) {
