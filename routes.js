@@ -7,7 +7,12 @@ var express = require('express'),
     router = express.Router();
 
 var form = form(
-    field('stripeToken').required().trim().isString(),
+    field('stripeToken').required().trim()
+    .custom(function(token) {
+        if (typeof(token) !== 'string') {
+            return token.toString()
+        }
+    }),
     field('amount').trim().isInt().toInt()
     .custom(function(amount) {
         if (amount < 300) {

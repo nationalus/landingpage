@@ -1,13 +1,14 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var routes = require('./routes');
-var validator = require('express-validator');
-var mongoose = require('mongoose');
-var config = require('./config')();
-var compression = require('compression');
+var express = require('express'),
+    path = require('path'),
+    favicon = require('serve-favicon'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    routes = require('./routes'),
+    validator = require('express-validator'),
+    mongoose = require('mongoose'),
+    config = require('./config')(),
+    compression = require('compression'),
+    logger = config.logger;
 
 var app = express();
 
@@ -36,7 +37,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
-        console.log(err);
+        logger.error(err);
         res.status(err.status || 500);
         res.json({
             message : err.message

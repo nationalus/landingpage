@@ -2,6 +2,7 @@ var supertest = require('supertest'),
     dbCleaner = require('./utils'),
     config = require('../config')(),
     stripe = require('stripe')(config.secretKey),
+    logger = config.logger,
     app = require('../app');
 
 describe('Endpoint Testing', function() {
@@ -37,13 +38,13 @@ describe('Endpoint Testing', function() {
             .expect(200)
             .end(function(err, res) {
                 if (err) {
-                    console.log(err);
+                    logger.error(err);
                     return done(err);
                 }
                 return done();
             });
         }).catch(function(err) {
-            console.log(err);
+            logger.error(err);
             return done(err);
         });
     });  
@@ -79,13 +80,13 @@ describe('Endpoint Testing', function() {
             .expect(400)
             .end(function(err, res) {
                 if (err) {
-                    console.log(err);
+                    logger.error(err);
                     return done(err);
                 }
                 return done();
             });
         }).catch(function(err) {
-            console.log(err);
+            logger.error(err);
             return done(err);
         });
     });  
@@ -120,13 +121,13 @@ describe('Endpoint Testing', function() {
             .expect(400)
             .end(function(err, res) {
                 if (err) {
-                    console.log(err);
+                    logger.error(err);
                     return done(err);
                 }
                 return done();
             });
         }).catch(function(err) {
-            console.log(err);
+            logger.error(err);
             return done(err);
         });
     });  
@@ -161,13 +162,13 @@ describe('Endpoint Testing', function() {
             .expect(400)
             .end(function(err, res) {
                 if (err) {
-                    console.log(err);
+                    logger.error(err);
                     return done(err);
                 }
                 return done();
             });
         }).catch(function(err) {
-            console.log(err);
+            logger.error(err);
             return done(err);
         });
     });  
@@ -202,13 +203,13 @@ describe('Endpoint Testing', function() {
             .expect(400)
             .end(function(err, res) {
                 if (err) {
-                    console.log(err);
+                    logger.error(err);
                     return done(err);
                 }
                 return done();
             });
         }).catch(function(err) {
-            console.log(err);
+            logger.error(err);
             return done(err);
         });
     });  
@@ -243,13 +244,13 @@ describe('Endpoint Testing', function() {
             .expect(400)
             .end(function(err, res) {
                 if (err) {
-                    console.log(err);
+                    logger.error(err);
                     return done(err);
                 }
                 return done();
             });
         }).catch(function(err) {
-            console.log(err);
+            logger.error(err);
             return done(err);
         });
     });  
@@ -284,13 +285,13 @@ describe('Endpoint Testing', function() {
             .expect(400)
             .end(function(err, res) {
                 if (err) {
-                    console.log(err);
+                    logger.error(err);
                     return done(err);
                 }
                 return done();
             });
         }).catch(function(err) {
-            console.log(err);
+            logger.error(err);
             return done(err);
         });
     });  
@@ -326,13 +327,13 @@ describe('Endpoint Testing', function() {
             .expect(400)
             .end(function(err, res) {
                 if (err) {
-                    console.log(err);
+                    logger.error(err);
                     return done(err);
                 }
                 return done();
             });
         }).catch(function(err) {
-            console.log(err);
+            logger.error(err);
             return done(err);
         });
     });  
@@ -367,13 +368,13 @@ describe('Endpoint Testing', function() {
             .expect(400)
             .end(function(err, res) {
                 if (err) {
-                    console.log(err);
+                    logger.error(err);
                     return done(err);
                 }
                 return done();
             });
         }).catch(function(err) {
-            console.log(err);
+            logger.error(err);
             return done(err);
         });
     });  
@@ -409,13 +410,13 @@ describe('Endpoint Testing', function() {
             .expect(500)
             .end(function(err, res) {
                 if (err) {
-                    console.log(err);
+                    logger.error(err);
                     return done(err);
                 }
                 return done();
             });
         }).catch(function(err) {
-            console.log(err);
+            logger.error(err);
             return done(err);
         });
     });  
@@ -450,13 +451,13 @@ describe('Endpoint Testing', function() {
             .expect(400)
             .end(function(err, res) {
                 if (err) {
-                    console.log(err);
+                    logger.error(err);
                     return done(err);
                 }
                 return done();
             });
         }).catch(function(err) {
-            console.log(err);
+            logger.error(err);
             return done(err);
         });
     });  
@@ -491,13 +492,13 @@ describe('Endpoint Testing', function() {
             .expect(400)
             .end(function(err, res) {
                 if (err) {
-                    console.log(err);
+                    logger.error(err);
                     return done(err);
                 }
                 return done();
             });
         }).catch(function(err) {
-            console.log(err);
+            logger.error(err);
             return done(err);
         });
     });  
