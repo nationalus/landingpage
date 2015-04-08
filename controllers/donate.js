@@ -7,7 +7,7 @@ var config = require('../config')(),
 module.exports = {
     checkout : function(req, res, next) {
         if (req.form.isValid) {
-            var source = req.body.stripeToken.toString(),
+            var source = req.body.stripeToken,
                 amount = req.body.amount,
                 currency = req.body.currency,
                 email = req.body.email,
