@@ -460,5 +460,46 @@ describe('Endpoint Testing', function() {
             return done(err);
         });
     });  
+    it('Donation w/o token', function(done) {
+        this.timeout(4000);
+        new Promise(function(resolve, reject) {
+            stripe.tokens.create({
+                card : {
+                    'number' : '4242424242424242',
+                    'exp_month' : 12,
+                    'exp_year' : 2016,
+                    'cvc' : '123'
+                }
+            }, function(err, token) {
+                if (err) return reject(err);
+                return resolve(token);
+            })
+        })
+        .then(function(token) {
+            supertest(app)
+            .post('/donate')
+            .send({
+                amount : 1000,
+                currency : 'usd',
+                address : 'Diagon Alley',
+                name : 'Grim Reaper',
+                occupation : 'Reaper of Souls',
+                employer : 'Fate',
+                email : 'grim.reaper@reaper.com',
+                zipCode : '12345'
+            })
+            .expect(400)
+            .end(function(err, res) {
+                if (err) {
+                    console.log(err);
+                    return done(err);
+                }
+                return done();
+            });
+        }).catch(function(err) {
+            console.log(err);
+            return done(err);
+        });
+    });  
 });
 
