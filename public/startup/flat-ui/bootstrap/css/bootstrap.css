@@ -5421,6 +5421,8 @@ button.close {
 }
 .carousel {
   position: relative;
+  margin: 0 auto;
+  width: 400px;
 }
 .carousel-inner {
   position: relative;
