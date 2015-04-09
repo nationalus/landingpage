@@ -114,7 +114,7 @@
                         <div class="form-group">
                             <label>
                                 <span>Card Number</span>
-                                <input type="number" size="50" data-stripe="number" class="form-control flat" required/>
+                                <input type="number" size="50" data-stripe="number" class="form-control flat" id="cc-num" required/>
                             </label>
                         </div>
                         <span>Expiration (MM/YYYY)</span>
@@ -122,13 +122,13 @@
                         <div class="clearfix">
                             <div class="form-group pull-left">
                                 <label>
-                                    <input type="number" size="4" data-stripe="exp-month" class="form-control flat"
+                                    <input type="number" size="4" data-stripe="exp-month" class="form-control flat" id="cc-month"
                                            placeholder="MM" required/>
                                 </label>
                             </div>
                             <!--<span>/</span>-->
                             <div class="form-group pull-left">
-                                <input type="number" size="4" data-stripe="exp-year" class="form-control flat"
+                                <input type="number" size="4" data-stripe="exp-year" class="form-control flat" id="cc-year"
                                        placeholder="YYYY" required/>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
                         <div class="form-group">
                             <label>
                                 <span>CVC</span>
-                                <input type="number" size="4" data-stripe="cvc" class="form-control flat" required/>
+                                <input type="number" size="4" data-stripe="cvc" class="form-control flat" id='cvc' required/>
                             </label>
                         </div>
                         <div class="form-group">
@@ -226,7 +226,32 @@
 <script src="startup/common-files/js/jquery.backgroundvideo.min.js"></script>
 <script src="startup/common-files/js/froogaloop.min.js"></script>
 <script src="startup/common-files/js/startup-kit.js"></script>
+<script src="startup/common-files/js/jquery.payment.js"></script>
 <!--<script src="startup/flat-ui/js/application.js"></script>-->
+<script type="text/javascript">
+  var ccNum = document.getElementById('cc-num');
+  ccNum.addEventListener('input', function() {
+    if ($.payment.validateCardNumber(ccNum.value)) {
+      console.log('number is valid'); 
+      ccNum.style.borderColor = '#2ecc71';
+    } else {
+      console.log('number is invalid');
+      ccNum.style.borderColor = '#ff0000';
+    }
+  });  
+  var cvc = document.getElementById('cvc');
+  cvc.addEventListener('input', function() {
+    if ($.payment.validateCardCVC(cvc.value)) {
+      console.log('cvc is valid')
+      cvc.style.borderColor = '#2ecc71';
+    } else {
+      console.log('cvc is invalid');
+      cvc.style.borderColor = '#ff0000';
+    }
+  });
+  var ccMonth = document.getElementById('cc-month');
+  var ccYear = document.getElementById('cc-year');
+</script>
 <script type="text/javascript">
     // This identifies your website in the createToken call below
     Stripe.setPublishableKey('pk_test_bOHcMClPjvhXPod62NShnyh2');
@@ -263,6 +288,11 @@
 
     $(function () {
         $('#payment-form').submit(function (e) {
+            if (!$.payment.validateCardNumber(ccNum.value) ||
+                !$.payment.validateCardCVC(cvc.value) ||
+                !$.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
+              return false;
+            }
             var $form = $(this);
 
             // Disable the submit button to prevent repeated clicks
