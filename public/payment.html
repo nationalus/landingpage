@@ -9,19 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <link rel="shortcut icon" href="startup/common-files/img/statepaclogo.png">
-
     <link rel="stylesheet" href="startup/flat-ui/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="startup/flat-ui/css/flat-ui.css">
-    <!-- Using only with Flat-UI (free)-->
     <link rel="stylesheet" href="startup/common-files/css/icon-font.css">
-    <!-- end -->
     <link rel="stylesheet" href="startup/common-files/css/animations.css">
     <link rel="stylesheet" href="static/css/style.css">
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-
     <title>Donations</title>
 </head>
-
 <body>
 <section class="header-14-sub">
     <div class="background">&nbsp;</div>
@@ -76,7 +71,6 @@
                                     <select class="form-control select flat select-primary select-block mbl"
                                             name="state">
                                         <optgroup label="States">
-                                            <!--<option value="0"></option>-->
                                             <option value="Alabama">Alabama</option>
                                             <option value="Alaska">Alaska</option>
                                             <option value="Arizona">Arizona</option>
@@ -128,7 +122,6 @@
                                             <option value="Wyoming">Wyoming</option>
                                         </optgroup>
                                     </select>
-                                    <!--<input type="text" size="10" name="state" class="form-control flat" required/>-->
                                 </label>
                             </div>
                         </div>
@@ -144,9 +137,7 @@
                 </div>
                 <div class="hero-unit">
                     <h4>2. Occupation Information</h4>
-
                     <div class="panel-body">
-                        <!--<div class="clearfix">-->
                         <div class="form-group">
                             <label>
                                 <span>Occupation</span>
@@ -159,13 +150,11 @@
                                 <input type="text" size="20" name="employer" class="form-control flat" required/>
                             </label>
                         </div>
-                        <!--</div>-->
                         <p>If you are retired, just write "Retired" for each space.</p>
                     </div>
                 </div>
                 <div class="hero-unit">
                     <h4>3. Payment Information</h4>
-
                     <div class="panel-body">
                         <div class="form-group">
                             <label>
@@ -175,7 +164,6 @@
                             </label>
                         </div>
                         <span>Expiration (MM/YYYY)</span>
-
                         <div class="clearfix">
                             <div class="form-group pull-left">
                                 <label>
@@ -184,13 +172,11 @@
                                            placeholder="MM" required/>
                                 </label>
                             </div>
-                            <!--<span>/</span>-->
                             <div class="form-group pull-left">
                                 <input type="number" size="4" data-stripe="exp-year" class="form-control flat"
                                        id="cc-year" placeholder="YYYY" required/>
                             </div>
                         </div>
-                        <!--</div>-->
                         <div class="form-group">
                             <label>
                                 <span>CVC</span>
@@ -204,16 +190,9 @@
                                 <input type="number" size="20" name="amount" class="form-control flat"
                                        id="payment-amount"
                                        placeholder="$199 USD" min="3" max="199" required/>
-
                                 <p>We accept donations of up to $199</p>
                             </label>
                         </div>
-                        <!--<div class="form-group">-->
-                        <!--<label>-->
-                        <!--<span>Currency</span>-->
-                        <!--<input type="text" size="20" name="currency"/>-->
-                        <!--</label>-->
-                        <!--</div>-->
                     </div>
                 </div>
                 <span class="payment-errors" style="color:red;"></span>
@@ -248,37 +227,14 @@
                 </div>
             </form>
             <a href="/" class="btn btn-primary special">Back to Main</a>
-            <!--<h3>We’re making something interesting, creative amazing and awesome products amazing</h3>-->
-
-            <!--<p>We have a great surprise for Designmodo fans – our first free HTML user interface kit. Flat UI Free-->
-            <!--is made on the basis of Twitter Bootstrap.</p>-->
-
-            <!--<div class="row">-->
-            <!--<div class="subscribe-form col-sm-8 col-sm-offset-2">-->
-            <!--<form>-->
-            <!--<div class="input-group">-->
-            <!--<input type="text" class="form-control" placeholder="mr.madbyte@gmail.com">-->
-            <!--<span class="input-group-btn">-->
-            <!--<button class="btn btn-primary" type="button">Notify Me</button>-->
-            <!--</span>-->
-            <!--</div>-->
-            <!--</form>-->
-            <!--</div>-->
-            <!--</div>-->
         </div>
     </div>
-    <!--</div>-->
 </section>
-
-<!--&lt;!&ndash;Slider testing&ndash;&gt;-->
-<!--<div id="slider">This is the slider</div>-->
-
 <footer class="footer-4 bg-midnight-blue">
     <div class="container">
         <a class="brand" href="#">Statesmen</a>
     </div>
 </footer>
-<!-- Placed at the end of the document so the pages load faster -->
 <script src="startup/common-files/js/jquery-1.10.2.min.js"></script>
 <script src="startup/common-files/js/jquery.bxslider.min.js"></script>
 <script src="startup/common-files/js/jquery.scrollTo-1.4.3.1-min.js"></script>
@@ -294,135 +250,6 @@
 <script src="startup/common-files/js/froogaloop.min.js"></script>
 <script src="startup/common-files/js/startup-kit.js"></script>
 <script src="startup/common-files/js/jquery.payment.js"></script>
-<!--<script src="startup/flat-ui/js/application.js"></script>-->
-<script type="text/javascript">
-    var ccNum = document.getElementById('cc-num'),
-        ccMonth = document.getElementById('cc-month'),
-        ccYear = document.getElementById('cc-year'),
-        paymentAmount = document.getElementById('payment-amount'),
-        cvc = document.getElementById('cvc');
-    ccNum.addEventListener('input', function () {
-        if ($.payment.validateCardNumber(ccNum.value)) {
-            console.log('number is valid');
-            ccNum.style.borderColor = '#2ecc71';
-        } else {
-            console.log('number is invalid');
-            ccNum.style.borderColor = '#ff0000';
-        }
-    });
-    cvc.addEventListener('input', function () {
-        if ($.payment.validateCardCVC(cvc.value)) {
-            console.log('cvc is valid')
-            cvc.style.borderColor = '#2ecc71';
-        } else {
-            console.log('cvc is invalid');
-            cvc.style.borderColor = '#ff0000';
-        }
-    });
-    ccMonth.addEventListener('input', function () {
-        if ($.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
-            ccMonth.style.borderColor = '#2ecc71';
-            ccYear.style.borderColor = '#2ecc71';
-        } else {
-            ccMonth.style.borderColor = '#ff0000';
-            ccYear.style.borderColor = '#ff0000';
-        }
-    });
-    ccYear.addEventListener('input', function () {
-        if ($.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
-            ccMonth.style.borderColor = '#2ecc71';
-            ccYear.style.borderColor = '#2ecc71';
-        } else {
-            ccMonth.style.borderColor = '#ff0000';
-            ccYear.style.borderColor = '#ff0000';
-        }
-    });
-    paymentAmount.addEventListener('input', function () {
-        if (paymentAmount.value < 3 || paymentAmount.value > 199) {
-            paymentAmount.style.borderColor = '#ff0000';
-        } else {
-            paymentAmount.style.borderColor = '#2ecc71';
-        }
-    });
-</script>
-<script type="text/javascript">
-    // This identifies your website in the createToken call below
-    Stripe.setPublishableKey('pk_test_bOHcMClPjvhXPod62NShnyh2');
-
-    var stripeResponseHandler = function (status, response) {
-        var $form = $('#payment-form');
-
-        if (response.error) {
-            // Show the errors on the form
-            $form.find('.payment-errors').text(response.error.message);
-            $form.find('button').prop('disabled', false);
-        } else {
-            // token contains id, last4, and card type
-            var token = response.id;
-            // Insert the token into the form so it gets submitted to the server
-            $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-            console.log(location.protocol, location.hostname, location.port);
-            var url = location.protocol + '://' + location.hostname + 
-              ':' + location.port;
-            // and re-submit
-            $.ajax({
-                type: 'POST',
-                url: '/donate',
-                data: $('form').serialize(),
-                success: function (response) {
-                    var form = document.getElementById('payment-form');
-                    form.reset();
-                    document.getElementById('payment-success')
-                    .textContent = 'Thank you for your donation to ' +
-                      'Statesmen!';
-                    ccNum.style.borderColor = '';
-                    ccMonth.style.borderColor = '';
-                    ccYear.style.borderColor = '';
-                    cvc.style.borderColor = '';
-                    paymentAmount.style.borderColor = '';
-                },
-                error: function (err) {
-                    // Error Logic
-                    console.log(err);
-                    document.querySelector('.payment-errors')
-                    .textContent = err.responseText;
-                }
-            });
-        }
-    };
-
-    $(function () {
-        $('#payment-form').submit(function (e) {
-            if (!$.payment.validateCardNumber(ccNum.value) || 
-                !$.payment.validateCardCVC(cvc.value) || 
-                !$.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
-                return false;
-            }
-            var $form = $(this);
-
-            // Disable the submit button to prevent repeated clicks
-            $form.find('button').prop('disabled', true);
-
-            Stripe.card.createToken($form, stripeResponseHandler);
-
-            // Prevent the form from submitting with the default action
-            return false;
-        });
-    });
-</script>
-<!--<script>-->
-<!--var $slider = $("slider");-->
-<!--console.log($slider);-->
-<!--if ($slider.length > 0) {-->
-<!--$slider.slider({-->
-<!--min: 1,-->
-<!--max: 5,-->
-<!--value: 3,-->
-<!--orientation: "horizontal",-->
-<!--range: "min"-->
-<!--}).addSliderSegments($slider.slider("option").max);-->
-<!--}-->
-<!--</script>-->
-</div>
+<script src="startup/common-files/js/payment.js"></script>
 </body>
 </html>
