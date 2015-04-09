@@ -367,13 +367,13 @@
                 success: function (response) {
                     var form = document.getElementById('payment-form');
                     form.reset();
-                    // Success Logic
-                    alert("Thank you for your donation!");
-                    window.location = 'http://localhost:8443/index.html';
+                    document.getElementById('payment-success')
+                    .textContent(response);
                 },
                 error: function (err) {
                     // Error Logic
-                    console.log('banana');
+                    document.getElementById('payment-errors')
+                    .textContent(err.message);
                 }
             });
         }
