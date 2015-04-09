@@ -142,7 +142,7 @@
                         <div class="form-group">
                             <label>
                                 <span>Amount</span>
-                                <input type="number" size="20" name="amount" class="form-control flat"
+                                <input type="number" size="20" name="amount" class="form-control flat" id="payment-amount"
                                        placeholder="$199 USD" min="3" max="199" required/>
                             </label>
                         </div>
@@ -229,7 +229,11 @@
 <script src="startup/common-files/js/jquery.payment.js"></script>
 <!--<script src="startup/flat-ui/js/application.js"></script>-->
 <script type="text/javascript">
-  var ccNum = document.getElementById('cc-num');
+  var ccNum = document.getElementById('cc-num'),
+      ccMonth = document.getElementById('cc-month'),
+      ccYear = document.getElementById('cc-year'),
+      paymentAmount = document.getElementById('payment-amount'),
+      cvc = document.getElementById('cvc');
   ccNum.addEventListener('input', function() {
     if ($.payment.validateCardNumber(ccNum.value)) {
       console.log('number is valid'); 
@@ -239,7 +243,6 @@
       ccNum.style.borderColor = '#ff0000';
     }
   });  
-  var cvc = document.getElementById('cvc');
   cvc.addEventListener('input', function() {
     if ($.payment.validateCardCVC(cvc.value)) {
       console.log('cvc is valid')
@@ -249,8 +252,31 @@
       cvc.style.borderColor = '#ff0000';
     }
   });
-  var ccMonth = document.getElementById('cc-month');
-  var ccYear = document.getElementById('cc-year');
+  ccMonth.addEventListener('input', function() {
+    if ($.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
+      ccMonth.style.borderColor = '#2ecc71';
+      ccYear.style.borderColor = '#2ecc71';
+    } else {
+      ccMonth.style.borderColor = '#ff0000';
+      ccYear.style.borderColor = '#ff0000';
+    }
+  });
+  ccYear.addEventListener('input', function() {
+    if ($.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
+      ccMonth.style.borderColor = '#2ecc71';
+      ccYear.style.borderColor = '#2ecc71';
+    } else {
+      ccMonth.style.borderColor = '#ff0000';
+      ccYear.style.borderColor = '#ff0000';
+    }
+  });
+  paymentAmount.addEventListener('input', function() {
+    if (paymentAmount.value < 3 || paymentAmount.value > 199) {
+      paymentAmount.style.borderColor = '#ff0000';
+    } else {
+      paymentAmount.style.borderColor = '#2ecc71';
+    }
+  });
 </script>
 <script type="text/javascript">
     // This identifies your website in the createToken call below
@@ -277,6 +303,7 @@
                 var form = document.getElementById('payment-form');
                 form.reset();
                 // Success Logic
+                console.log(response);
               },
               error : function(err) {
                 // Error Logic
