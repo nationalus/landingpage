@@ -161,9 +161,7 @@
                             <!--<a class="conditions" id="thisButton">Terms & Conditions</a>-->
                             <!--</div>-->
                         </div>
-                        <a class="btn btn-huge" data-toggle="modal" data-placement="bottom"
-                           title="By donating, you accept our Terms & Conditions. Click to donate."
-                           data-target="#payments">Donate</a>
+                        <a class="btn btn-huge" id="payment-page">Donate</a>
                     </div>
                 </div>
                 <div class="col-sm-6 col-sm-offset-1 description-detail">
@@ -589,6 +587,10 @@
     //            show: true
     //        });
     //    });
+</script>
+<script>
+  var link = document.getElementById('payment-page');
+  link.href = 'http://localhost:8443/payment.html';
 </script>
 <script>
     $('#thisButton').click(function () {
