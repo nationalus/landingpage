@@ -1168,7 +1168,7 @@ label {
 }
 .form-group.focus .form-control,
 .form-control:focus {
-  border-color: #1abc9c;
+  /*border-color: #1abc9c;*/
   outline: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -1190,7 +1190,7 @@ fieldset[disabled] .form-control {
   border-color: #bdc3c7;
 }
 .form-control.flat:focus {
-  border-color: #2ECC71;
+  /*border-color: none;*/
 }
 .input-sm {
   height: 35px;
