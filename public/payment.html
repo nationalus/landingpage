@@ -30,9 +30,7 @@
             <div class="hero-unit">
                 <h2>Donations</h2>
             </div>
-            <form action="http://localhost:8443/donate" method="POST" id="payment-form">
-
-
+            <form action="" method="POST" id="payment-form">
                 <div class="hero-unit">
                     <h4>1. Personal Information</h4>
 
@@ -137,8 +135,8 @@
                         <div class="form-group">
                             <label>
                                 <span>ZipCode</span>
-                                <input type="number" size="10" name="zipCode" class="form-control flat"
-                                       pattern="/(^\d{5}$)|(^\d{5}-\d{4}$)/"
+                                <input type="text" size="10" name="zipCode" class="form-control flat"
+                                       pattern="(^\d{5}$)|(^\d{5}-\d{4}$)"
                                        title="5 characters minimum" required/>
                             </label>
                         </div>
@@ -219,7 +217,7 @@
                     </div>
                 </div>
                 <span class="payment-errors" style="color:red;"></span>
-                <span class="payment-success" style="color:green; font-size: larger;"></span>
+                <span id="payment-success" style="color:green;"></span>
                 <br/>
                 <br/>
                 <button type="submit" class="btn btn-primary special">Submit Donation</button>
@@ -249,7 +247,7 @@
                     </div>
                 </div>
             </form>
-            <button href="index.html" type="submit" class="btn btn-primary special">Back to Main</button>
+            <a href="/" class="btn btn-primary special">Back to Main</a>
             <!--<h3>We’re making something interesting, creative amazing and awesome products amazing</h3>-->
 
             <!--<p>We have a great surprise for Designmodo fans – our first free HTML user interface kit. Flat UI Free-->
@@ -299,10 +297,10 @@
 <!--<script src="startup/flat-ui/js/application.js"></script>-->
 <script type="text/javascript">
     var ccNum = document.getElementById('cc-num'),
-            ccMonth = document.getElementById('cc-month'),
-            ccYear = document.getElementById('cc-year'),
-            paymentAmount = document.getElementById('payment-amount'),
-            cvc = document.getElementById('cvc');
+        ccMonth = document.getElementById('cc-month'),
+        ccYear = document.getElementById('cc-year'),
+        paymentAmount = document.getElementById('payment-amount'),
+        cvc = document.getElementById('cvc');
     ccNum.addEventListener('input', function () {
         if ($.payment.validateCardNumber(ccNum.value)) {
             console.log('number is valid');
@@ -363,21 +361,31 @@
             var token = response.id;
             // Insert the token into the form so it gets submitted to the server
             $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+            console.log(location.protocol, location.hostname, location.port);
+            var url = location.protocol + '://' + location.hostname + 
+              ':' + location.port;
             // and re-submit
             $.ajax({
                 type: 'POST',
-                url: $('form').attr('action'),
+                url: '/donate',
                 data: $('form').serialize(),
                 success: function (response) {
                     var form = document.getElementById('payment-form');
                     form.reset();
-                    // Success Logic
-                    alert("Thank you for your donation!");
-                    window.location = 'http://localhost:8443/index.html';
+                    document.getElementById('payment-success')
+                    .textContent = 'Thank you for your donation to ' +
+                      'Statesmen!';
+                    ccNum.style.borderColor = '';
+                    ccMonth.style.borderColor = '';
+                    ccYear.style.borderColor = '';
+                    cvc.style.borderColor = '';
+                    paymentAmount.style.borderColor = '';
                 },
                 error: function (err) {
                     // Error Logic
-                    console.log(err.responseText);
+                    console.log(err);
+                    document.querySelector('.payment-errors')
+                    .textContent = err.responseText;
                 }
             });
         }
@@ -385,7 +393,9 @@
 
     $(function () {
         $('#payment-form').submit(function (e) {
-            if (!$.payment.validateCardNumber(ccNum.value) || !$.payment.validateCardCVC(cvc.value) || !$.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
+            if (!$.payment.validateCardNumber(ccNum.value) || 
+                !$.payment.validateCardCVC(cvc.value) || 
+                !$.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
                 return false;
             }
             var $form = $(this);

@@ -10,7 +10,7 @@ describe('Donation Model', function() {
     describe('Create', function() {
         it('Creates a new donation', function(done) {
             donationModel.create({
-                amount : 1000,
+                amount : 100,
                 email : 'grim.reaper@reaper.com',
                 firstName : 'Grim',
                 lastName : 'Reaper',
@@ -27,7 +27,7 @@ describe('Donation Model', function() {
                 should.exist(created);
                 created.email.should.equal(
                     'grim.reaper@reaper.com');
-                created.amount.should.equal(1000);
+                created.amount.should.equal(100);
                 created.zipcode.should.equal('12345');
                 done();
             });
@@ -55,7 +55,7 @@ describe('Donation Model', function() {
         });
         it('Attempts to create a donation without email', function(done) {
             donationModel.create({
-                amount : 1000,
+                amount : 100,
                 firstName : 'Grim',
                 lastName : 'Reaper',
                 address : {
@@ -74,7 +74,7 @@ describe('Donation Model', function() {
         });
         it('Attempts to create a donation without zipcode', function(done) {
             donationModel.create({
-                amount : 1000,
+                amount : 100,
                 email : 'grim.reaper@reaper.com',
                 firstName : 'Grim',
                 lastName : 'Reaper',
@@ -96,7 +96,7 @@ describe('Donation Model', function() {
             donationModel.create({
                 name : 'Grim Reaper',
                 address : 'Diagon Alley',
-                amount : 1000,
+                amount : 100,
                 email : 'grim.reaper',
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
@@ -110,7 +110,7 @@ describe('Donation Model', function() {
         it('Attempts to create a donation with invalid email', 
             function(done) {
             donationModel.create({
-                amount : 1000,
+                amount : 100,
                 email : 'grim.reaper@.com',
                 firstName : 'Grim',
                 lastName : 'Reaper',
@@ -131,7 +131,7 @@ describe('Donation Model', function() {
         it('Attempts to create a donation with invalid email', 
             function(done) {
             donationModel.create({
-                amount : 1000,
+                amount : 100,
                 email : 'grim.reaperreaper.com',
                 firstName : 'Grim',
                 lastName : 'Reaper',
@@ -152,7 +152,7 @@ describe('Donation Model', function() {
         it('Attempts to create a donation with invalid zipcode', 
             function(done) {
             donationModel.create({
-                amount : 1000,
+                amount : 100,
                 email : 'grim.reaper@reaper.com',
                 firstName : 'Grim',
                 lastName : 'Reaper',
@@ -173,7 +173,7 @@ describe('Donation Model', function() {
         it('Attempts to create a donation with invalid zipcode', 
             function(done) {
             donationModel.create({
-                amount : 1000,
+                amount : 100,
                 email : 'grim.reaper@reaper.com',
                 firstName : 'Grim',
                 lastName : 'Reaper',
@@ -194,7 +194,7 @@ describe('Donation Model', function() {
         it('Attempts to create a donation without address', 
             function(done) {
             donationModel.create({
-                amount : 1000,
+                amount : 100,
                 email : 'grim.reaper@reaper.com',
                 firstName : 'Grim',
                 lastName : 'Reaper',
@@ -210,7 +210,7 @@ describe('Donation Model', function() {
         it('Attempts to create a donation without employer', 
             function(done) {
             donationModel.create({
-                amount : 1000,
+                amount : 100,
                 email : 'grim.reaper@reaper.com',
                 firstName : 'Grim',
                 lastName : 'Reaper',
@@ -230,7 +230,7 @@ describe('Donation Model', function() {
         it('Attempts to create a donation without occupation', 
             function(done) {
             donationModel.create({
-                amount : 1000,
+                amount : 100,
                 email : 'grim.reaper@reaper.com',
                 firstName : 'Grim',
                 lastName : 'Reaper',
