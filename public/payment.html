@@ -31,7 +31,7 @@
                 <h2>Donations</h2>
             </div>
             <form action="http://localhost:8443/donate" method="POST" id="payment-form">
-                <span class="payment-errors"></span>
+
 
                 <div class="hero-unit">
                     <h4>1. Personal Information</h4>
@@ -216,6 +216,7 @@
                         <!--</div>-->
                     </div>
                 </div>
+                <span class="payment-errors" style="color:red;"></span>
                 <button type="submit" class="btn btn-primary special">Submit Donation</button>
                 <div class="hero-unit">
                     <h4>Terms & Conditions</h4>
@@ -365,7 +366,7 @@
                     var form = document.getElementById('payment-form');
                     form.reset();
                     // Success Logic
-                        alert("Thank you for your donation!");
+                    alert("Thank you for your donation!");
                     window.location = 'http://localhost:8443/index.html';
                 },
                 error: function (err) {
