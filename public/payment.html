@@ -135,7 +135,7 @@
                         <div class="form-group">
                             <label>
                                 <span>ZipCode</span>
-                                <input type="number" size="10" name="zipCode" class="form-control flat" required/>
+                                <input type="number" size="10" name="zipCode" class="form-control flat" id="zipcode" required/>
                             </label>
                         </div>
                     </div>
@@ -215,7 +215,7 @@
                     </div>
                 </div>
                 <span class="payment-errors" style="color:red;"></span>
-                <span class="payment-success" style="color:green;"></span>
+                <span id="payment-success" style="color:green;"></span>
                 <br/>
                 <br/>
                 <button type="submit" class="btn btn-primary special">Submit Donation</button>
@@ -295,10 +295,14 @@
 <!--<script src="startup/flat-ui/js/application.js"></script>-->
 <script type="text/javascript">
     var ccNum = document.getElementById('cc-num'),
-            ccMonth = document.getElementById('cc-month'),
-            ccYear = document.getElementById('cc-year'),
-            paymentAmount = document.getElementById('payment-amount'),
-            cvc = document.getElementById('cvc');
+        ccMonth = document.getElementById('cc-month'),
+        ccYear = document.getElementById('cc-year'),
+        paymentAmount = document.getElementById('payment-amount'),
+        cvc = document.getElementById('cvc'),
+        zipcode = document.getElementById('zipcode'),
+        validateZip = function(zip) {
+          return zip.matches(/(^\d{5}$)|(^\d{5}-\d{4}$)/);
+        };
     ccNum.addEventListener('input', function () {
         if ($.payment.validateCardNumber(ccNum.value)) {
             console.log('number is valid');
@@ -371,12 +375,14 @@
                     var form = document.getElementById('payment-form');
                     form.reset();
                     document.getElementById('payment-success')
-                    .textContent(response);
+                    .textContent = 'Thank you for your donation to ' +
+                      'Statesmen!';
                 },
                 error: function (err) {
                     // Error Logic
-                    document.getElementById('payment-errors')
-                    .textContent(err.message);
+                    console.log(err);
+                    document.querySelector('.payment-errors')
+                    .textContent = err.responseText;
                 }
             });
         }
@@ -384,7 +390,10 @@
 
     $(function () {
         $('#payment-form').submit(function (e) {
-            if (!$.payment.validateCardNumber(ccNum.value) || !$.payment.validateCardCVC(cvc.value) || !$.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
+            if (!$.payment.validateCardNumber(ccNum.value) || 
+                !$.payment.validateCardCVC(cvc.value) || 
+                !$.payment.validateCardExpiry(ccMonth.value, ccYear.value) ||
+                !validateZip(zipcode.value)) {
                 return false;
             }
             var $form = $(this);
