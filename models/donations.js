@@ -11,8 +11,8 @@ var DonationSchema = new Schema({
     amount : { 
         type : Number,
         required : true,  
-        min : 300,
-        max : 19900
+        min : 3,
+        max : 199
     },
     email : {
         type : String,

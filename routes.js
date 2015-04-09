@@ -15,7 +15,7 @@ var form = form(
     }),
     field('amount').trim().isInt().toInt()
     .custom(function(amount) {
-        if (amount < 300) {
+        if (amount < 3 || amount > 199) {
             throw new Error("Amount was too small");
         }
     }),

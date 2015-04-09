@@ -21,7 +21,7 @@ module.exports = {
                 employer = req.body.employer;
 
             stripe.charges.create({
-                amount : amount,
+                amount : amount * 100,
                 currency : 'usd',
                 card : source, 
                 receipt_email : email,
