@@ -590,7 +590,8 @@
 </script>
 <script>
   var link = document.getElementById('payment-page');
-  link.href = 'http://localhost:8443/payment.html';
+  var loc = document.location;
+  link.href = 'http://' + loc.hostname + ':' + loc.port + '/payment.html';
 </script>
 <script>
     $('#thisButton').click(function () {
