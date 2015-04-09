@@ -61,27 +61,27 @@
                         <div class="form-group">
                             <label>
                                 <span>Address</span>
-                                <input type="text" size="50" name="address" class="form-control flat" required/>
+                                <input type="text" size="50" name="street" class="form-control flat" required/>
                             </label>
                         </div>
                         <div class="clearfix">
                             <div class="form-group pull-left">
                                 <label>
                                     <span>City</span>
-                                    <input type="text" size="20" name="address" class="form-control flat"/>
+                                    <input type="text" size="20" name="city" class="form-control flat" required/>
                                 </label>
                             </div>
                             <div class="form-group pull-right">
                                 <label>
                                     <span>State</span>
-                                    <input type="text" size="10" name="address" class="form-control flat"/>
+                                    <input type="text" size="10" name="state" class="form-control flat" required/>
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>
                                 <span>ZipCode</span>
-                                <input type="text" size="10" name="zipCode" class="form-control flat"/>
+                                <input type="number" size="10" name="zipCode" class="form-control flat" required/>
                             </label>
                         </div>
                     </div>
@@ -94,13 +94,13 @@
                         <div class="form-group">
                             <label>
                                 <span>Occupation</span>
-                                <input type="text" size="20" name="occupation" class="form-control flat"/>
+                                <input type="text" size="20" name="occupation" class="form-control flat" required/>
                             </label>
                         </div>
                         <div class="form-group">
                             <label>
                                 <span>Employer</span>
-                                <input type="text" size="20" name="employer" class="form-control flat"/>
+                                <input type="text" size="20" name="employer" class="form-control flat" required/>
                             </label>
                         </div>
                         <!--</div>-->
@@ -114,7 +114,7 @@
                         <div class="form-group">
                             <label>
                                 <span>Card Number</span>
-                                <input type="text" size="50" data-stripe="number" class="form-control flat"/>
+                                <input type="number" size="50" data-stripe="number" class="form-control flat" required/>
                             </label>
                         </div>
                         <span>Expiration (MM/YYYY)</span>
@@ -122,28 +122,28 @@
                         <div class="clearfix">
                             <div class="form-group pull-left">
                                 <label>
-                                    <input type="text" size="4" data-stripe="exp-month" class="form-control flat"
-                                           placeholder="MM"/>
+                                    <input type="number" size="4" data-stripe="exp-month" class="form-control flat"
+                                           placeholder="MM" required/>
                                 </label>
                             </div>
                             <!--<span>/</span>-->
                             <div class="form-group pull-left">
-                                <input type="text" size="4" data-stripe="exp-year" class="form-control flat"
-                                       placeholder="YYYY"/>
+                                <input type="number" size="4" data-stripe="exp-year" class="form-control flat"
+                                       placeholder="YYYY" required/>
                             </div>
                         </div>
                         <!--</div>-->
                         <div class="form-group">
                             <label>
                                 <span>CVC</span>
-                                <input type="text" size="4" data-stripe="cvc" class="form-control flat"/>
+                                <input type="number" size="4" data-stripe="cvc" class="form-control flat" required/>
                             </label>
                         </div>
                         <div class="form-group">
                             <label>
                                 <span>Amount</span>
-                                <input type="text" size="20" name="amount" class="form-control flat"
-                                       placeholder="$199 USD"/>
+                                <input type="number" size="20" name="amount" class="form-control flat"
+                                       placeholder="$199 USD" required/>
                             </label>
                         </div>
                         <!--<div class="form-group">-->
