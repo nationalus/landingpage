@@ -135,7 +135,9 @@
                         <div class="form-group">
                             <label>
                                 <span>ZipCode</span>
-                                <input type="number" size="10" name="zipCode" class="form-control flat" id="zipcode" required/>
+                                <input type="text" size="10" name="zipCode" class="form-control flat"
+                                       pattern="(^\d{5}$)|(^\d{5}-\d{4}$)"
+                                       title="5 characters minimum" required/>
                             </label>
                         </div>
                     </div>
@@ -245,7 +247,7 @@
                     </div>
                 </div>
             </form>
-             <button href="index.html" type="submit" class="btn btn-primary special">Back to Main</button>
+            <button href="index.html" type="submit" class="btn btn-primary special">Back to Main</button>
             <!--<h3>We’re making something interesting, creative amazing and awesome products amazing</h3>-->
 
             <!--<p>We have a great surprise for Designmodo fans – our first free HTML user interface kit. Flat UI Free-->
@@ -298,11 +300,7 @@
         ccMonth = document.getElementById('cc-month'),
         ccYear = document.getElementById('cc-year'),
         paymentAmount = document.getElementById('payment-amount'),
-        cvc = document.getElementById('cvc'),
-        zipcode = document.getElementById('zipcode'),
-        validateZip = function(zip) {
-          return zip.matches(/(^\d{5}$)|(^\d{5}-\d{4}$)/);
-        };
+        cvc = document.getElementById('cvc');
     ccNum.addEventListener('input', function () {
         if ($.payment.validateCardNumber(ccNum.value)) {
             console.log('number is valid');
@@ -377,6 +375,11 @@
                     document.getElementById('payment-success')
                     .textContent = 'Thank you for your donation to ' +
                       'Statesmen!';
+                    ccNum.style.borderColor = '';
+                    ccMonth.style.borderColor = '';
+                    ccYear.style.borderColor = '';
+                    cvc.style.borderColor = '';
+                    paymentAmount.style.borderColor = '';
                 },
                 error: function (err) {
                     // Error Logic
@@ -392,8 +395,7 @@
         $('#payment-form').submit(function (e) {
             if (!$.payment.validateCardNumber(ccNum.value) || 
                 !$.payment.validateCardCVC(cvc.value) || 
-                !$.payment.validateCardExpiry(ccMonth.value, ccYear.value) ||
-                !validateZip(zipcode.value)) {
+                !$.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
                 return false;
             }
             var $form = $(this);
