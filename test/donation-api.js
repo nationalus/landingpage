@@ -26,7 +26,7 @@ describe('Endpoint Testing', function() {
             .post('/donate')
             .send({
                 stripeToken : token.id,
-                amount : 1000,
+                amount : 100,
                 street : 'Diagon Alley',
                 state : 'AZ',
                 city : 'Tempe',
@@ -116,7 +116,7 @@ describe('Endpoint Testing', function() {
             .send({
                 stripeToken : token.id,
                 currency : 'usd',
-                amount : 1000,
+                amount : 100,
                 'first-name' : 'Grim',
                 'last-name' : 'Reaper',
                 occupation : 'Reaper of Souls',
@@ -157,7 +157,7 @@ describe('Endpoint Testing', function() {
             .post('/donate')
             .send({
                 stripeToken : token.id,
-                amount : 1000,
+                amount : 100,
                 currency : 'usd',
                 address : 'Diagon Alley',
                 occupation : 'Reaper of Souls',
@@ -198,7 +198,7 @@ describe('Endpoint Testing', function() {
             .post('/donate')
             .send({
                 stripeToken : token.id,
-                amount : 1000,
+                amount : 100,
                 currency : 'usd',
                 address : 'Diagon Alley',
                 'first-name' : 'Grim',
@@ -240,7 +240,7 @@ describe('Endpoint Testing', function() {
             .post('/donate')
             .send({
                 stripeToken : token.id,
-                amount : 1000,
+                amount : 100,
                 currency : 'usd',
                 address : 'Diagon Alley',
                 'first-name' : 'Grim',
@@ -282,7 +282,7 @@ describe('Endpoint Testing', function() {
             .post('/donate')
             .send({
                 stripeToken : token.id,
-                amount : 1000,
+                amount : 100,
                 currency : 'usd',
                 address : 'Diagon Alley',
                 'first-name' : 'Grim',
@@ -325,7 +325,7 @@ describe('Endpoint Testing', function() {
             .post('/donate')
             .send({
                 stripeToken : token.id,
-                amount : 1000,
+                amount : 100,
                 currency : 'usd',
                 address : 'Diagon Alley',
                 'first-name' : 'Grim',
@@ -367,7 +367,7 @@ describe('Endpoint Testing', function() {
             .post('/donate')
             .send({
                 stripeToken : token.id,
-                amount : 1000,
+                amount : 100,
                 currency : 'usd',
                 city : 'asdf',
                 street : 'asdf',
@@ -412,7 +412,7 @@ describe('Endpoint Testing', function() {
             .post('/donate')
             .send({
                 stripeToken : token.id,
-                amount : 1000,
+                amount : 100,
                 currency : 'usd',
                 address : 'Diagon Alley',
                 'first-name' : 'Grim',
@@ -453,7 +453,7 @@ describe('Endpoint Testing', function() {
             supertest(app)
             .post('/donate')
             .send({
-                amount : 1000,
+                amount : 100,
                 currency : 'usd',
                 address : 'Diagon Alley',
                 'first-name' : 'Grim',
