@@ -41,47 +41,47 @@
                             <div class="form-group pull-left">
                                 <label>
                                     <span>First Name</span>
-                                    <input type="text" size="20" name="first-name" class="form-control"/>
+                                    <input type="text" size="20" name="first-name" class="form-control flat" required/>
                                 </label>
                             </div>
                             <div class="form-group pull-right">
                                 <label>
                                     <span>Last Name</span>
-                                    <input type="text" size="20" name="last-name" class="form-control"/>
+                                    <input type="text" size="20" name="last-name" class="form-control flat" required/>
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>
                                 <span>Email</span>
-                                <input type="email" size="50" name="email" class="form-control"/>
+                                <input type="email" size="50" name="email" class="form-control flat" required/>
                             </label>
                         </div>
                         <hr>
                         <div class="form-group">
                             <label>
                                 <span>Address</span>
-                                <input type="text" size="50" name="address" class="form-control"/>
+                                <input type="text" size="50" name="address" class="form-control flat" required/>
                             </label>
                         </div>
                         <div class="clearfix">
                             <div class="form-group pull-left">
                                 <label>
                                     <span>City</span>
-                                    <input type="text" size="20" name="address" class="form-control"/>
+                                    <input type="text" size="20" name="address" class="form-control flat"/>
                                 </label>
                             </div>
                             <div class="form-group pull-right">
                                 <label>
                                     <span>State</span>
-                                    <input type="text" size="10" name="address" class="form-control"/>
+                                    <input type="text" size="10" name="address" class="form-control flat"/>
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>
                                 <span>ZipCode</span>
-                                <input type="text" size="10" name="zipCode" class="form-control"/>
+                                <input type="text" size="10" name="zipCode" class="form-control flat"/>
                             </label>
                         </div>
                     </div>
@@ -90,20 +90,20 @@
                     <h4>2. Occupation Information</h4>
 
                     <div class="panel-body">
-                        <div class="clearfix">
-                            <div class="form-group pull-left">
+                        <!--<div class="clearfix">-->
+                            <div class="form-group">
                                 <label>
                                     <span>Occupation</span>
-                                    <input type="text" size="20" name="occupation" class="form-control"/>
+                                    <input type="text" size="20" name="occupation" class="form-control flat"/>
                                 </label>
                             </div>
-                            <div class="form-group pull-right">
+                            <div class="form-group">
                                 <label>
                                     <span>Employer</span>
-                                    <input type="text" size="20" name="employer" class="form-control"/>
+                                    <input type="text" size="20" name="employer" class="form-control flat"/>
                                 </label>
                             </div>
-                        </div>
+                        <!--</div>-->
                         <p>If you are retired, just write "Retired" for each space.</p>
                     </div>
                 </div>
@@ -114,37 +114,41 @@
                         <div class="form-group">
                             <label>
                                 <span>Card Number</span>
-                                <input type="text" size="50" data-stripe="number" class="form-control"/>
+                                <input type="text" size="50" data-stripe="number" class="form-control flat"/>
                             </label>
                         </div>
-                        <div class="form-group">
-                            <label>
-                                <span>Expiration (MM/YYYY)</span>
-                                <input type="text" size="4" data-stripe="exp-month" class="form-control"/>
-                            </label>
-                            <span> / </span>
-                            <input type="text" size="4" data-stripe="exp-year" class="form-control"/>
+                        <span>Expiration (MM/YYYY)</span>
+                        <div class="clearfix">
+                            <div class="form-group pull-left">
+                                <label>
+                                    <input type="text" size="4" data-stripe="exp-month" class="form-control flat" placeholder="MM"/>
+                                </label>
+                            </div>
+                            <!--<span>/</span>-->
+                            <div class="form-group pull-left">
+                                <input type="text" size="4" data-stripe="exp-year" class="form-control flat" placeholder="YYYY"/>
+                            </div>
                         </div>
+                        <!--</div>-->
                         <div class="form-group">
                             <label>
                                 <span>CVC</span>
-                                <input type="text" size="4" data-stripe="cvc" class="form-control"/>
+                                <input type="text" size="4" data-stripe="cvc" class="form-control flat"/>
                             </label>
                         </div>
                         <div class="form-group">
                             <label>
                                 <span>Amount</span>
-                                <input type="text" size="20" name="amount" class="form-control"/>
-                            </label>
-
-                            <div id="slider" class="ui-slider-horizontal"></div>
-                        </div>
-                        <div class="form-group">
-                            <label>
-                                <span>Currency</span>
-                                <input type="text" size="20" name="currency"/>
+                                <input type="text" size="20" name="amount" class="form-control flat"
+                                       placeholder="$199 USD"/>
                             </label>
                         </div>
+                        <!--<div class="form-group">-->
+                        <!--<label>-->
+                        <!--<span>Currency</span>-->
+                        <!--<input type="text" size="20" name="currency"/>-->
+                        <!--</label>-->
+                        <!--</div>-->
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary special">Submit Payment</button>
@@ -195,6 +199,10 @@
     </div>
     <!--</div>-->
 </section>
+
+<!--&lt;!&ndash;Slider testing&ndash;&gt;-->
+<!--<div id="slider">This is the slider</div>-->
+
 <footer class="footer-1 bg-midnight-blue">
     <div class="container">
         <div class="row">
@@ -202,18 +210,18 @@
                 <!--<p class="lead"><b>Terms & Conditions</b></p>-->
 
                 <!--<div>-->
-                    <!--By contributing, I certify that: 1. This contribution is made from my own funds – not those of-->
-                    <!--another person or entity.-->
-                    <!--2. I am not a foreign national, government contractor, national bank, or corporation chartered-->
-                    <!--by-->
-                    <!--an act of-->
-                    <!--Congress.-->
+                <!--By contributing, I certify that: 1. This contribution is made from my own funds – not those of-->
+                <!--another person or entity.-->
+                <!--2. I am not a foreign national, government contractor, national bank, or corporation chartered-->
+                <!--by-->
+                <!--an act of-->
+                <!--Congress.-->
 
-                    <!--Statesmen is registered with the FEC as an independent expenditure committee.-->
-                    <!--Federal law requires us to use our best efforts to collect and report the name, mailing address,-->
-                    <!--occupation and name of employer of individuals whose contributions exceed $200 in a calendar-->
-                    <!--year.-->
-                    <!--Contributions or gifts are not tax deductible.-->
+                <!--Statesmen is registered with the FEC as an independent expenditure committee.-->
+                <!--Federal law requires us to use our best efforts to collect and report the name, mailing address,-->
+                <!--occupation and name of employer of individuals whose contributions exceed $200 in a calendar-->
+                <!--year.-->
+                <!--Contributions or gifts are not tax deductible.-->
                 <!--</div>-->
                 <div class="social-btns">
                     <a href="#" class="social-btn-facebook"
@@ -283,7 +291,7 @@
 <script src="startup/common-files/js/jquery.backgroundvideo.min.js"></script>
 <script src="startup/common-files/js/froogaloop.min.js"></script>
 <script src="startup/common-files/js/startup-kit.js"></script>
-<script src="startup/flat-ui/js/application.js"></script>
+<!--<script src="startup/flat-ui/js/application.js"></script>-->
 <script type="text/javascript">
     // This identifies your website in the createToken call below
     Stripe.setPublishableKey('pk_test_bOHcMClPjvhXPod62NShnyh2');
@@ -320,18 +328,19 @@
         });
     });
 </script>
-<script>
-    var $slider = $("#slider");
-    if ($slider.length > 0) {
-        $slider.slider({
-            min: 3,
-            max: 199,
-            value: 1,
-            orientation: "horizontal",
-            range: "min"
-        }).addSliderSegments($slider.slider("option").max);
-    }
-</script>
+<!--<script>-->
+    <!--var $slider = $("slider");-->
+    <!--console.log($slider);-->
+    <!--if ($slider.length > 0) {-->
+        <!--$slider.slider({-->
+            <!--min: 1,-->
+            <!--max: 5,-->
+            <!--value: 3,-->
+            <!--orientation: "horizontal",-->
+            <!--range: "min"-->
+        <!--}).addSliderSegments($slider.slider("option").max);-->
+    <!--}-->
+<!--</script>-->
 </div>
 </body>
 </html>
