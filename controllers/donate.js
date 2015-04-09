@@ -31,10 +31,10 @@ module.exports = {
                     if (err.rawType === 'invalid_request_error' ||
                         err.rawType === 'api_error') {
                         logger.error(err);
-                        return res.status(400).send(err.message);
+                        return res.status(400).send(err);
                     } else if (err.rawType === 'card_error') {
                         logger.error(err);
-                        return res.status(400).send(err.code);
+                        return res.status(400).send(err);
                     } else {
                         logger.error(err);
                         return res.status(500).send("Unknown Error recieved from " + 
