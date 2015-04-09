@@ -365,7 +365,8 @@
                     var form = document.getElementById('payment-form');
                     form.reset();
                     // Success Logic
-                    console.log(response);
+                        alert("Thank you for your donation!");
+                    window.location = 'http://localhost:8443/index.html';
                 },
                 error: function (err) {
                     // Error Logic
