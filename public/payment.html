@@ -308,10 +308,10 @@
               success : function(response) { 
                 var form = document.getElementById('payment-form');
                 form.reset();
-                console.log(response);
-                window.location = "";
+                // Success Logic
               },
               error : function(err) {
+                // Error Logic
                 console.log(err.responseText);
               }
             });

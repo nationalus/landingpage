@@ -379,7 +379,7 @@ describe('Endpoint Testing', function() {
                 email : 'grim.reaper@reaper.com',
                 zipCode : '1234'
             })
-            .expect(500)
+            .expect(400)
             .end(function(err, res) {
                 if (err) {
                     logger.error(err);

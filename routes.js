@@ -23,11 +23,17 @@ var form = form(
     field('state').trim().isString().required(),
     field('city').required().trim().isString(),
     field('street').required().trim().isString(),
-    field('first-name').trim().required(),
-    field('last-name').trim().required(),
+    field('first-name').trim().required().isString(),
+    field('last-name').trim().required().isString(),
     field('occupation').trim().isString().required(),
     field('employer').trim().isString().required(),
-    field('zipCode').trim().required().notEmpty()
+    field('zipCode').trim().required().isString()
+    .custom(function(zipcode) {
+        if (zipcode.match(/(^\d{5}$)|(^\d{5}-\d{4}$)/)) {
+            return;
+        }
+        throw new Error("Invalid zipcode");
+    })
 );
 
 router.post('/donate', form, donateCtrl.checkout);
