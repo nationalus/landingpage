@@ -30,7 +30,7 @@
             <div class="hero-unit">
                 <h2>Donations</h2>
             </div>
-            <form action="http://localhost:8443/donate" method="POST" id="payment-form">
+            <form action="" method="POST" id="payment-form">
                 <span class="payment-errors"></span>
 
                 <div class="hero-unit">
@@ -356,10 +356,13 @@
             var token = response.id;
             // Insert the token into the form so it gets submitted to the server
             $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+            console.log(location.protocol, location.hostname, location.port);
+            var url = location.protocol + '://' + location.hostname + 
+              ':' + location.port;
             // and re-submit
             $.ajax({
                 type: 'POST',
-                url: $('form').attr('action'),
+                url: '/donate',
                 data: $('form').serialize(),
                 success: function (response) {
                     var form = document.getElementById('payment-form');
@@ -369,7 +372,7 @@
                 },
                 error: function (err) {
                     // Error Logic
-                    console.log(err.responseText);
+                    console.log('banana');
                 }
             });
         }
