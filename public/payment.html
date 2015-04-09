@@ -75,7 +75,8 @@
                                 <label>
                                     <span>State</span>
 
-                                    <select class="form-control select flat select-primary select-block mbl" name="state">
+                                    <select class="form-control select flat select-primary select-block mbl"
+                                            name="state">
                                         <optgroup label="States">
                                             <!--<option value="0"></option>-->
                                             <option value="1">Alabama</option>
@@ -169,7 +170,8 @@
                         <div class="form-group">
                             <label>
                                 <span>Card Number</span>
-                                <input type="number" size="50" data-stripe="number" class="form-control flat" id="cc-num" required/>
+                                <input type="number" size="50" data-stripe="number" class="form-control flat"
+                                       id="cc-num" required/>
                             </label>
                         </div>
                         <span>Expiration (MM/YYYY)</span>
@@ -177,27 +179,30 @@
                         <div class="clearfix">
                             <div class="form-group pull-left">
                                 <label>
-                                    <input type="number" size="4" data-stripe="exp-month" class="form-control flat" id="cc-month" max="2"
+                                    <input type="number" size="4" data-stripe="exp-month" class="form-control flat"
+                                           id="cc-month" max="12"
                                            placeholder="MM" required/>
                                 </label>
                             </div>
                             <!--<span>/</span>-->
                             <div class="form-group pull-left">
-                                <input type="number" size="4" data-stripe="exp-year" class="form-control flat" id="cc-year" max="4"
-                                       placeholder="YYYY" required/>
+                                <input type="number" size="4" data-stripe="exp-year" class="form-control flat"
+                                       id="cc-year" placeholder="YYYY" required/>
                             </div>
                         </div>
                         <!--</div>-->
                         <div class="form-group">
                             <label>
                                 <span>CVC</span>
-                                <input type="number" size="4" data-stripe="cvc" class="form-control flat" id='cvc' required/>
+                                <input type="number" size="4" data-stripe="cvc" class="form-control flat" id='cvc'
+                                       required/>
                             </label>
                         </div>
                         <div class="form-group">
                             <label>
                                 <span>Amount</span>
-                                <input type="number" size="20" name="amount" class="form-control flat" id="payment-amount"
+                                <input type="number" size="20" name="amount" class="form-control flat"
+                                       id="payment-amount"
                                        placeholder="$199 USD" min="3" max="199" required/>
 
                                 <p>We accept donations of up to $199</p>
@@ -286,54 +291,54 @@
 <script src="startup/common-files/js/jquery.payment.js"></script>
 <!--<script src="startup/flat-ui/js/application.js"></script>-->
 <script type="text/javascript">
-  var ccNum = document.getElementById('cc-num'),
-      ccMonth = document.getElementById('cc-month'),
-      ccYear = document.getElementById('cc-year'),
-      paymentAmount = document.getElementById('payment-amount'),
-      cvc = document.getElementById('cvc');
-  ccNum.addEventListener('input', function() {
-    if ($.payment.validateCardNumber(ccNum.value)) {
-      console.log('number is valid'); 
-      ccNum.style.borderColor = '#2ecc71';
-    } else {
-      console.log('number is invalid');
-      ccNum.style.borderColor = '#ff0000';
-    }
-  });  
-  cvc.addEventListener('input', function() {
-    if ($.payment.validateCardCVC(cvc.value)) {
-      console.log('cvc is valid')
-      cvc.style.borderColor = '#2ecc71';
-    } else {
-      console.log('cvc is invalid');
-      cvc.style.borderColor = '#ff0000';
-    }
-  });
-  ccMonth.addEventListener('input', function() {
-    if ($.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
-      ccMonth.style.borderColor = '#2ecc71';
-      ccYear.style.borderColor = '#2ecc71';
-    } else {
-      ccMonth.style.borderColor = '#ff0000';
-      ccYear.style.borderColor = '#ff0000';
-    }
-  });
-  ccYear.addEventListener('input', function() {
-    if ($.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
-      ccMonth.style.borderColor = '#2ecc71';
-      ccYear.style.borderColor = '#2ecc71';
-    } else {
-      ccMonth.style.borderColor = '#ff0000';
-      ccYear.style.borderColor = '#ff0000';
-    }
-  });
-  paymentAmount.addEventListener('input', function() {
-    if (paymentAmount.value < 3 || paymentAmount.value > 199) {
-      paymentAmount.style.borderColor = '#ff0000';
-    } else {
-      paymentAmount.style.borderColor = '#2ecc71';
-    }
-  });
+    var ccNum = document.getElementById('cc-num'),
+            ccMonth = document.getElementById('cc-month'),
+            ccYear = document.getElementById('cc-year'),
+            paymentAmount = document.getElementById('payment-amount'),
+            cvc = document.getElementById('cvc');
+    ccNum.addEventListener('input', function () {
+        if ($.payment.validateCardNumber(ccNum.value)) {
+            console.log('number is valid');
+            ccNum.style.borderColor = '#2ecc71';
+        } else {
+            console.log('number is invalid');
+            ccNum.style.borderColor = '#ff0000';
+        }
+    });
+    cvc.addEventListener('input', function () {
+        if ($.payment.validateCardCVC(cvc.value)) {
+            console.log('cvc is valid')
+            cvc.style.borderColor = '#2ecc71';
+        } else {
+            console.log('cvc is invalid');
+            cvc.style.borderColor = '#ff0000';
+        }
+    });
+    ccMonth.addEventListener('input', function () {
+        if ($.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
+            ccMonth.style.borderColor = '#2ecc71';
+            ccYear.style.borderColor = '#2ecc71';
+        } else {
+            ccMonth.style.borderColor = '#ff0000';
+            ccYear.style.borderColor = '#ff0000';
+        }
+    });
+    ccYear.addEventListener('input', function () {
+        if ($.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
+            ccMonth.style.borderColor = '#2ecc71';
+            ccYear.style.borderColor = '#2ecc71';
+        } else {
+            ccMonth.style.borderColor = '#ff0000';
+            ccYear.style.borderColor = '#ff0000';
+        }
+    });
+    paymentAmount.addEventListener('input', function () {
+        if (paymentAmount.value < 3 || paymentAmount.value > 199) {
+            paymentAmount.style.borderColor = '#ff0000';
+        } else {
+            paymentAmount.style.borderColor = '#2ecc71';
+        }
+    });
 </script>
 <script type="text/javascript">
     // This identifies your website in the createToken call below
@@ -353,29 +358,27 @@
             $form.append($('<input type="hidden" name="stripeToken" />').val(token));
             // and re-submit
             $.ajax({
-              type : 'POST',
-              url : $('form').attr('action'),
-              data : $('form').serialize(),
-              success : function(response) { 
-                var form = document.getElementById('payment-form');
-                form.reset();
-                // Success Logic
-                console.log(response);
-              },
-              error : function(err) {
-                // Error Logic
-                console.log(err.responseText);
-              }
+                type: 'POST',
+                url: $('form').attr('action'),
+                data: $('form').serialize(),
+                success: function (response) {
+                    var form = document.getElementById('payment-form');
+                    form.reset();
+                    // Success Logic
+                    console.log(response);
+                },
+                error: function (err) {
+                    // Error Logic
+                    console.log(err.responseText);
+                }
             });
         }
     };
 
     $(function () {
         $('#payment-form').submit(function (e) {
-            if (!$.payment.validateCardNumber(ccNum.value) ||
-                !$.payment.validateCardCVC(cvc.value) ||
-                !$.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
-              return false;
+            if (!$.payment.validateCardNumber(ccNum.value) || !$.payment.validateCardCVC(cvc.value) || !$.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
+                return false;
             }
             var $form = $(this);
 
