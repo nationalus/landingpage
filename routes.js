@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var express = require('express'),
     donateCtrl = require('./controllers/donate'),
@@ -10,7 +10,7 @@ var form = form(
     field('stripeToken').required().trim()
     .custom(function(token) {
         if (typeof(token) !== 'string') {
-            return token.toString()
+            return token.toString();
         }
     }),
     field('amount').trim().isInt().toInt()
