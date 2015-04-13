@@ -16,7 +16,7 @@ var app = express();
 //Database connection
 mongoose.connect(config.dbURI);
 
-app.use(enforce.HTTPS());
+app.use(enforce.HTTPS(true));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
