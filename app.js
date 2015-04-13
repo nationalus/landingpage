@@ -23,6 +23,7 @@ app.use(compression());
 
 var forceSSL = function(req, res, next) {
     if (req.headers['x-forwarded-proto'] !== 'https') {
+        console.log('Hi, Pete');
         return res.redirect(['https://', req.get('Host'), req.url].join(''));
     }
     return next();
@@ -31,10 +32,6 @@ var forceSSL = function(req, res, next) {
 if (process.env.NODE_ENV === 'production') {
     app.use(forceSSL);
 }
-app.use(function(req, res, next) {
-    res.redirect('https://google.com');
-});
-
 app.use(routes);
 
 // catch 404 and forward to error handler
