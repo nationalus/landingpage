@@ -6,7 +6,6 @@ var express = require('express'),
     routes = require('./routes'),
     validator = require('express-validator'),
     mongoose = require('mongoose'),
-    sslRedirect = require('heroku-ssl-redirect'),
     config = require('./config')(),
     compression = require('compression'),
     logger = config.logger;
@@ -23,9 +22,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(compression());
 
 app.use(function(req, res, next) {
-    console.log(req.headers['x-forwarded-proto']);
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        console.log(req.headers['x-forwarded-proto']);
+        res.redirect('https://statesmen.info' + req.url);
+    } else {
+        next();
+    } 
 });
-app.use(sslRedirect());
 app.use(routes);
 
 // catch 404 and forward to error handler
