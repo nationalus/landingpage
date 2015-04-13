@@ -29,10 +29,7 @@ var forceSSL = function(req, res, next) {
     return next();
 };
 
-if (process.env.NODE_ENV === 'production') {
-    console.log('Hello, Pete');
-    app.use(forceSSL);
-}
+app.use(forceSSL);
 app.use(routes);
 
 // catch 404 and forward to error handler
