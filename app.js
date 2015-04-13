@@ -6,9 +6,9 @@ var express = require('express'),
     routes = require('./routes'),
     validator = require('express-validator'),
     mongoose = require('mongoose'),
-    sslRedirect = require('heroku-ssl-redirect'),
     config = require('./config')(),
     compression = require('compression'),
+    enforce = require('express-sslify'),
     logger = config.logger;
 
 var app = express();
@@ -16,13 +16,13 @@ var app = express();
 //Database connection
 mongoose.connect(config.dbURI);
 
+app.use(enforce.HTTPS(true));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(compression());
 
-app.use(sslRedirect());
 app.use(routes);
 
 // catch 404 and forward to error handler

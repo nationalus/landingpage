@@ -4,3 +4,6 @@
 **/.idea
 **/npm-debug.log
 **/data
+**/*.crt
+**/*.csr
+**/*.key
