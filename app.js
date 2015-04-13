@@ -31,6 +31,9 @@ var forceSSL = function(req, res, next) {
 if (process.env.NODE_ENV === 'production') {
     app.use(forceSSL);
 }
+app.use(function(req, res, next) {
+    res.redirect('https://google.com');
+});
 
 app.use(routes);
 
