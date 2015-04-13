@@ -30,6 +30,7 @@ var forceSSL = function(req, res, next) {
 };
 
 if (process.env.NODE_ENV === 'production') {
+    console.log('Hello, Pete');
     app.use(forceSSL);
 }
 app.use(routes);
