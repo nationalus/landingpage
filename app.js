@@ -32,7 +32,7 @@ app.configure(function() {
     if (env === 'production') {
         app.use(forceSSL);
     }
-};
+});
 
 app.use(routes);
 
