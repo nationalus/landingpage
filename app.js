@@ -22,6 +22,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(compression());
 
+app.use(function(req, res, next) {
+    console.log(req.headers['x-forwarded-proto']);
+});
 app.use(sslRedirect());
 app.use(routes);
 
