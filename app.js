@@ -28,11 +28,9 @@ var forceSSL = function(req, res, next) {
     return next();
 };
 
-app.configure(function() {
-    if (env === 'production') {
-        app.use(forceSSL);
-    }
-});
+if (process.env.NODE_ENV === 'production') {
+    app.use(forceSSL);
+}
 
 app.use(routes);
 
