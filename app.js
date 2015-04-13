@@ -21,14 +21,19 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(compression());
 
-app.use(function(req, res, next) {
+var forceSSL = function(req, res, next) {
     if (req.headers['x-forwarded-proto'] !== 'https') {
-        console.log(req.headers['x-forwarded-proto']);
-        res.redirect('https://statesmen.info' + req.url);
-    } else {
-        next();
-    } 
-});
+        return res.redirect(['https://', req.get('Host'), req.url].join(''));
+    }
+    return next();
+};
+
+app.configure(funciton() {
+    if (env === 'production') {
+        app.use(forceSSL);
+    }
+};
+
 app.use(routes);
 
 // catch 404 and forward to error handler
