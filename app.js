@@ -21,6 +21,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(compression());
 
+// Force Redirect to SSL
+app.use('*',function(req,res,next){
+  if(req.headers['x-forwarded-proto']!='https')
+    res.redirect('https://statesmen.info'+req.url)
+  else
+    next() 
+})
 
 app.use(routes);
 
