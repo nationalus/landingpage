@@ -1,7 +1,7 @@
 //page links
 var link = document.getElementById('payment-page');
     var loc = document.location;
-    link.href = 'http://' + loc.hostname + ':' + loc.port + '/payment.html';
+    link.href = 'http://' + loc.hostname + ':' + loc.port + '/donate.html';
 
 
 //modals
