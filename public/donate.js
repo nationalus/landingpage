@@ -77,9 +77,11 @@ var stripeResponseHandler = function (status, response) {
             success: function (response) {
                 var form = document.getElementById('payment-form');
                 form.reset();
+                document.querySelector('.payment-errors')
+                    .textContent = '';
                 document.getElementById('payment-success')
                     .textContent = 'Thank you for your donation to ' +
-                'Statesmen!';
+                        'Statesmen!';
                 ccNum.style.borderColor = '';
                 ccMonth.style.borderColor = '';
                 ccYear.style.borderColor = '';
@@ -99,6 +101,8 @@ var stripeResponseHandler = function (status, response) {
 $(function () {
     $('#payment-form').submit(function (e) {
         if (!$.payment.validateCardNumber(ccNum.value) || !$.payment.validateCardCVC(cvc.value) || !$.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
+            document.querySelector('.payment-errors')
+                .textContent = 'Please review your credit card information';
             return false;
         }
         var $form = $(this);
