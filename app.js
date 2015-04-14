@@ -9,6 +9,7 @@ var express = require('express'),
     config = require('./config')(),
     compression = require('compression'),
     enforce = require('express-sslify'),
+    minify = require('express-minify'),
     fs = require('fs'),
     logger = config.logger;
 
@@ -18,6 +19,15 @@ var app = express();
 mongoose.connect(config.dbURI);
 if (process.env.NODE_ENV === 'production') {
     app.use(enforce.HTTPS(true));
+    app.use(minify({
+        js_match : /javascript/,
+        css_match : /css/,
+        sass_match : /scss/,
+        less_match : /less/,
+        stylus_match : /stylus/,
+        coffee_match : /coffeescript/,
+        cache : path.join(__dirname, 'public/dist')
+    }));
 }
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
