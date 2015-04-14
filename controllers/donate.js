@@ -32,7 +32,7 @@ module.exports = {
                         err.rawType === 'api_error') {
                         logger.error(err);
                         return res.status(400).json({
-                            status : err,
+                            status : "err",
                             data : null,
                             message : err.message
                         });
