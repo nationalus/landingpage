@@ -1,8 +1,3 @@
-//page links
-var link = document.getElementById('payment-page');
-    var loc = document.location;
-    link.href = loc.protocol + '/donate.html';
-
 //modals
 $('#thisButton').click(function () {
         $('#myModal').modal({
