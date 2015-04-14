@@ -17,8 +17,6 @@ var app = express();
 
 //Database connection
 mongoose.connect(config.dbURI);
-
-//Middleware
 if (process.env.NODE_ENV === 'production') {
     app.use(enforce.HTTPS(true));
     app.use(minify({
@@ -31,13 +29,12 @@ if (process.env.NODE_ENV === 'production') {
         cache : path.join(__dirname, 'public/dist')
     }));
 }
-//app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Routing
 app.use(routes);
 
 // catch 404 and forward to error handler
