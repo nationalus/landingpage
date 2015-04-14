@@ -102,7 +102,7 @@ $(function () {
     $('#payment-form').submit(function (e) {
         if (!$.payment.validateCardNumber(ccNum.value) || !$.payment.validateCardCVC(cvc.value) || !$.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
             document.querySelector('.payment-errors')
-                .textContent = '';
+                .textContent = 'Please review your credit card information';
             return false;
         }
         var $form = $(this);
