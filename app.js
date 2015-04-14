@@ -16,7 +16,6 @@ var app = express();
 //Database connection
 mongoose.connect(config.dbURI);
 if (process.env.NODE_ENV === 'production') {
-    console.log("yeah");
     app.use(enforce.HTTPS(true));
 }
 app.use(bodyParser.json());
