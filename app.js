@@ -29,10 +29,18 @@ if (process.env.NODE_ENV === 'production') {
         cache : path.join(__dirname, 'public/dist')
     }));
 }
+app.use(compression({
+    filter : function(req, res, next) {
+        if (req.headers['x-no-compression']) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
