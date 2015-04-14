@@ -9,6 +9,7 @@ var express = require('express'),
     config = require('./config')(),
     compression = require('compression'),
     enforce = require('express-sslify'),
+    minify = require('express-minify'),
     fs = require('fs'),
     logger = config.logger;
 
@@ -16,14 +17,34 @@ var app = express();
 
 //Database connection
 mongoose.connect(config.dbURI);
+
+//Middleware
 if (process.env.NODE_ENV === 'production') {
     app.use(enforce.HTTPS(true));
+    app.use(minify({
+        js_match : /javascript/,
+        css_match : /css/,
+        sass_match : /scss/,
+        less_match : /less/,
+        stylus_match : /stylus/,
+        coffee_match : /coffeescript/,
+        cache : path.join(__dirname, 'public/dist')
+    }));
+} else {
+    app.use(compression({
+        filter : function(req, res, next) {
+            if (req.headers['x-no-compression']) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }));
 }
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(compression());
 
 app.use(routes);
 
