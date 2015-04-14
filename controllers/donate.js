@@ -48,7 +48,7 @@ module.exports = {
                         return res.status(500).json({
                             status : "error",
                             data : null,
-                            message : "Unknown error recieved from Stripe";
+                            message : "Unknown error recieved from Stripe"
                         }); 
                     }
                 } else if (!charge) {
@@ -99,7 +99,7 @@ module.exports = {
             res.status(400).json({
                 status : "fail",
                 data : null,
-                message : "Invalid Form
+                message : "Invalid Form"
             });
         }
     }
