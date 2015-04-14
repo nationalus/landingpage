@@ -9,6 +9,7 @@ var express = require('express'),
     config = require('./config')(),
     compression = require('compression'),
     enforce = require('express-sslify'),
+    fs = require('fs'),
     logger = config.logger;
 
 var app = express();
@@ -41,8 +42,11 @@ if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         logger.error(err);
         res.status(err.status || 500);
-        res.json({
-            message : err.message
+        fs.readFile(__dirname + '/public/error.html', function(err, data) {
+            if (err) {
+                return res.send('Error: Page not found');
+            }
+            res.send(data.toString());
         });
     });
 }
@@ -51,8 +55,11 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.json({
-        message : err.message
+    fs.readFile(__dirname + '/public/error.html', function(err, data) {
+        if (err) {
+            return res.send('Error: Page not found');
+        }
+        res.send(data.toString());
     });
 });
 
