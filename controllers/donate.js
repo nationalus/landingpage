@@ -31,18 +31,33 @@ module.exports = {
                     if (err.rawType === 'invalid_request_error' ||
                         err.rawType === 'api_error') {
                         logger.error(err);
-                        return res.status(400).send(err);
+                        return res.status(400).json({
+                            status : err,
+                            data : null,
+                            message : err.message
+                        });
                     } else if (err.rawType === 'card_error') {
                         logger.error(err);
-                        return res.status(400).send(err);
+                        return res.status(400).json({
+                            status : "fail",
+                            data : err.code,
+                            message : err.message
+                        });
                     } else {
                         logger.error(err);
-                        return res.status(500).send("Unknown Error recieved from " + 
-                            "stripe"); 
+                        return res.status(500).json({
+                            status : "error",
+                            data : null,
+                            message : "Unknown error recieved from Stripe";
+                        }); 
                     }
                 } else if (!charge) {
                     logger.error(err);
-                    return res.status(500).send("Server Error");
+                    return res.status(500).json({
+                        status : "error",
+                        data : null,
+                        message : "Server Error"
+                    });
                 } else {
                     model.create({
                         amount : amount,
@@ -60,16 +75,32 @@ module.exports = {
                     }, function(err, donation) {
                         if (err || !donation) {
                             logger.error(err);
-                            return res.status(500).send("Server Error");
+                            return res.status(500).json({
+                                status : "error",
+                                data : null,
+                                message : "Server Error"
+                            });
                         } else {
-                            return res.status(200).send("Success");
+                            return res.status(200).json({
+                                status : "success",
+                                data : { 
+                                    firstName : firstName,
+                                    lastName : lastName,
+                                    email : email,
+                                    amount : amount
+                                }
+                            });
                         }
                     });
                 }
             });
         } else {
             logger.debug(req.form);
-            res.status(400).send("Invalid Form");
+            res.status(400).json({
+                status : "fail",
+                data : null,
+                message : "Invalid Form
+            });
         }
     }
 };
