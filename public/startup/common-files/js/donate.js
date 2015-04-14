@@ -50,7 +50,7 @@ paymentAmount.addEventListener('input', function () {
 
 
 // This identifies your website in the createToken call below
-Stripe.setPublishableKey('pk_test_bOHcMClPjvhXPod62NShnyh2');
+Stripe.setPublishableKey('pk_live_r84QmvlejEZRQgmWe1LfQwZ6');
 
 var stripeResponseHandler = function (status, response) {
     var $form = $('#payment-form');
