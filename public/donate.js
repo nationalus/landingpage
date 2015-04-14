@@ -50,7 +50,7 @@ paymentAmount.addEventListener('input', function () {
 
 
 // This identifies your website in the createToken call below
-if (location.hostname === localhost) {
+if (location.hostname === 'localhost') {
     Stripe.setPublishableKey('pk_test_bOHcMClPjvhXPod62NShnyh2');
 } else {
     Stripe.setPublishableKey('pk_live_r84QmvlejEZRQgmWe1LfQwZ6');
@@ -69,8 +69,6 @@ var stripeResponseHandler = function (status, response) {
         // Insert the token into the form so it gets submitted to the server
         $form.append($('<input type="hidden" name="stripeToken" />').val(token));
         console.log(location.protocol, location.hostname, location.port);
-        var url = location.protocol + '://' + location.hostname +
-            ':' + location.port;
         // and re-submit
         $.ajax({
             type: 'POST',
@@ -92,7 +90,7 @@ var stripeResponseHandler = function (status, response) {
                 // Error Logic
                 console.log(err);
                 document.querySelector('.payment-errors')
-                    .textContent = err.responseText;
+                    .textContent = err.message;
             }
         });
     }
