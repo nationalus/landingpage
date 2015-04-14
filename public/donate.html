@@ -164,6 +164,7 @@
                             </label>
                         </div>
                         <span>Expiration (MM/YYYY)</span>
+
                         <div class="clearfix">
                             <div class="form-group pull-left">
                                 <label>
@@ -190,16 +191,12 @@
                                 <input type="number" size="20" name="amount" class="form-control flat"
                                        id="payment-amount"
                                        placeholder="$199 USD" min="3" max="199" required/>
+
                                 <p>We accept donations of up to $199</p>
                             </label>
                         </div>
                     </div>
                 </div>
-                <span class="payment-errors" style="color:red;"></span>
-                <span id="payment-success" style="color:green;"></span>
-                <br/>
-                <br/>
-                <button type="submit" class="btn btn-primary special">Submit Donation</button>
                 <div class="hero-unit">
                     <!--<h4>Terms & Conditions</h4>-->
 
@@ -226,7 +223,14 @@
                         Contributions or gifts are not tax deductible.
                     </div>
                 </div>
+                <span class="payment-errors" style="color:red;"></span>
+                <span id="payment-success" style="color:green;"></span>
+                <br/>
+                <br/>
+                <button type="submit" class="btn btn-primary special">Submit Donation</button>
+
             </form>
+            <br/>
             <a href="/" class="btn btn-primary special">Back to Main</a>
         </div>
     </div>
