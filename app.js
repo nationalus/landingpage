@@ -15,8 +15,10 @@ var app = express();
 
 //Database connection
 mongoose.connect(config.dbURI);
-
-app.use(enforce.HTTPS(true));
+if (process.env.NODE_ENV === 'production') {
+    console.log("yeah");
+    app.use(enforce.HTTPS(true));
+}
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
