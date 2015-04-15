@@ -98,6 +98,7 @@ var stripeResponseHandler = function (status, response) {
     }
 };
 
+// Payment Form submission
 $(function () {
     $('#payment-form').submit(function (e) {
         if (!$.payment.validateCardNumber(ccNum.value) || !$.payment.validateCardCVC(cvc.value) || !$.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {

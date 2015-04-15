@@ -1,17 +1,3 @@
-//modals
-$('#thisButton').click(function () {
-        $('#myModal').modal({
-            show: true
-        });
-    });
-    $('paymentChoice').click(function () {
-        $('#myModal').modal({
-            show: false
-        });
-
-    });
-
-
 //tooltip
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
