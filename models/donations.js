@@ -19,6 +19,7 @@ var DonationSchema = new Schema({
         required : true,
         lowercase : true,
         trim : true,
+        maxlength : 256
         match : emailRegex
     },
     zipcode : {
@@ -28,10 +29,12 @@ var DonationSchema = new Schema({
     },
     firstName : {
         type : String,
+        maxlength : 256,
         required : true
     },
     lastName : {
         type : String,
+        maxlength : 256,
         required : true
     },
     created : {
@@ -40,23 +43,28 @@ var DonationSchema = new Schema({
     },
     employer : {
         type : String,
+        maxlength : 256,
         required : true
     },
     occupation : {
         type : String,
+        maxlength : 256,
         required : true
     },
     address : {
         street : {
             type : String,
+            maxlength : 256,
             required : true
         },
         city : {
             type : String,
+            maxlength : 256,
             required : true
         },
         state : {
             type : String,
+            maxlength : 256,
             required : true
         }
     } 
