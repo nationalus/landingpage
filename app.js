@@ -21,16 +21,6 @@ mongoose.connect(config.dbURI);
 //Middleware
 if (process.env.NODE_ENV === 'production') {
     app.use(enforce.HTTPS(true));
-    app.use(minify({
-        js_match : /javascript/,
-        css_match : /css/,
-        sass_match : /scss/,
-        less_match : /less/,
-        stylus_match : /stylus/,
-        coffee_match : /coffeescript/,
-        cache : path.join(__dirname, 'public/dist')
-    }));
-} else {
     app.use(compression({
         filter : function(req, res, next) {
             if (req.headers['x-no-compression']) {
@@ -39,6 +29,15 @@ if (process.env.NODE_ENV === 'production') {
                 return true;
             }
         }
+    }));
+    app.use(minify({
+        js_match : /javascript/,
+        css_match : /css/,
+        sass_match : /scss/,
+        less_match : /less/,
+        stylus_match : /stylus/,
+        coffee_match : /coffeescript/,
+        cache : false 
     }));
 }
 app.use(bodyParser.json());
