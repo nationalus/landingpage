@@ -2323,9 +2323,16 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
     }
 }
 
+@media only screen and (max-width: 480px) {
+    .header-14-sub .hero-unit {
+        width: 100%;
+    }
+}
+
 .special {
     background-color: #34495e;
     color: white;
+    width:230px;
 }
 
 /**
