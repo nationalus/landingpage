@@ -19,7 +19,7 @@ var DonationSchema = new Schema({
         required : true,
         lowercase : true,
         trim : true,
-        maxlength : 256
+        maxlength : 256,
         match : emailRegex
     },
     zipcode : {

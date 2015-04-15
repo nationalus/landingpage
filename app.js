@@ -19,17 +19,17 @@ var app = express();
 mongoose.connect(config.dbURI);
 
 //Middleware
+app.use(compression({
+    filter : function(req, res, next) {
+        if (req.headers['x-no-compression']) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}));
 if (process.env.NODE_ENV === 'production') {
     app.use(enforce.HTTPS(true));
-    app.use(compression({
-        filter : function(req, res, next) {
-            if (req.headers['x-no-compression']) {
-                return false;
-            } else {
-                return true;
-            }
-        }
-    }));
     app.use(minify({
         js_match : /javascript/,
         css_match : /css/,
