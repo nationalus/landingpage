@@ -162,36 +162,58 @@
                         <div class="clearfix">
                             <div class="form-group pull-left">
                                 <label>
-                                    <input type="number" size="4" data-stripe="exp-month" class="form-control flat"
-                                           id="cc-month" max="12"
-                                           placeholder="MM" required/>
+                                    <select id="cc-month" data-stripe="exp-month"
+                                            class="form-control select flat select-primary select-block mbl"
+                                            name="state">
+                                        <optgroup label="Months">
+                                            <option value="01">1-January</option>
+                                            <option value="02">2-February</option>
+                                            <option value="03">3-March</option>
+                                            <option value="04">4-April</option>
+                                            <option value="05">5-May</option>
+                                            <option value="06">6-June</option>
+                                            <option value="07">7-July</option>
+                                            <option value="08">8-August</option>
+                                            <option value="09">9-September</option>
+                                            <option value="10">10-October</option>
+                                            <option value="11">11-November</option>
+                                            <option value="12">12-December</option>
+                                        </optgroup>
+                                    </select>
                                 </label>
                             </div>
                             <div class="form-group pull-left">
-                                <input type="number" size="4" data-stripe="exp-year" class="form-control flat"
-                                       id="cc-year" placeholder="YYYY" required/>
+                                <select id="cc-year" data-stripe="exp-year"
+                                        class="form-control select flat select-primary select-block mbl"
+                                        name="state">
+                                    <optgroup label="Months">
+                                        <option value="2015">2015</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                    </optgroup>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>
                                 <span>CVC</span>
-                                <input type="number" size="4" data-stripe="cvc" class="form-control flat" id='cvc'
+                                <input type="text" size="4" data-stripe="cvc" class="form-control flat" id='cvc'
                                        required/>
                             </label>
                         </div>
                         <div class="form-group">
                             <label>
                                 <span>Amount</span>
-                                <input type="number" size="20" name="amount" class="form-control flat"
+                                <input type="text" size="20" name="amount" class="form-control flat"
                                        id="payment-amount"
                                        placeholder="$199 USD" min="3" max="199" required/>
-
-
                                 <i class="fa fa-lock fa-2x"></i><a href="https://stripe.com/help/security"
                                                                    target="_blank">
                                 <img src="startup/common-files/img/outline.png" alt=""/>
                             </a>
-
                                 <p>We accept donations of up to $199</p>
                             </label>
                         </div>
