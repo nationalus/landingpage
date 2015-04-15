@@ -1142,7 +1142,6 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 .content-19 .col-sm-7 .quote:before {
     content: '';
-    background: url("../../startup/common-files/icons/quote-up-mb@2x.png") no-repeat;
     -webkit-background-size: 31px 22px;
     -moz-background-size: 31px 22px;
     -o-background-size: 31px 22px;
