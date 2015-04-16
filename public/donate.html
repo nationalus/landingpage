@@ -16,6 +16,7 @@
     <div class="background">&nbsp;</div>
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
+            <img src="startup/common-files/img/statesmenpaclogosm.jpg" alt=""/>
             <div class="hero-unit">
                 <h2>Donations</h2>
             </div>
@@ -148,8 +149,10 @@
                     </div>
                 </div>
                 <div class="hero-unit">
+
                     <!--<h4>3. Payment Information</h4>-->
                     <div class="panel-body">
+                        <i class="fa fa-lock pull-right">Secure Donation</i>
                         <div class="form-group">
                             <label>
                                 <span>Card Number</span>
@@ -160,6 +163,7 @@
                         <span>Expiration (MM/YYYY)</span>
 
                         <div class="clearfix">
+
                             <div class="form-group pull-left">
                                 <label>
                                     <select id="cc-month" data-stripe="exp-month"
@@ -212,16 +216,21 @@
                                        placeholder="$199 USD" min="3" max="199" required/>
                                 <!--<i class="fa fa-lock fa-2x"></i>-->
                                 <p>We accept donations of up to $199</p>
-                                <a href="https://stripe.com/help/security" target="_blank">
-                                    <img src="startup/common-files/img/outline.png" alt=""/>
-                                </a>
 
 
                             </label>
                         </div>
                     </div>
                 </div>
+                <h3><span class="payment-errors" style="color:red;"></span></h3>
+                <h3><span id="payment-success" style="color:white;"></span></h3>
+                <button type="submit" class="btn btn-primary special">Submit Secure Donation</button>
+                <br/>
+                <a href="https://stripe.com/help/security" target="_blank">
+                                    <img src="startup/common-files/img/outline.png" alt=""/>
+                                </a>
                 <div class="hero-unit">
+
                     <!--<h4>Terms & Conditions</h4>-->
 
                     <div class="panel-body">
@@ -247,15 +256,8 @@
                         Contributions or gifts are not tax deductible.
                     </div>
                 </div>
-                <h3><span class="payment-errors" style="color:red;"></span></h3>
-
-                <h3><span id="payment-success" style="color:white;"></span></h3>
-                <br/>
-                <br/>
-                <button type="submit" class="btn btn-primary special">Submit Secure Donation</button>
 
             </form>
-            <br/>
             <!--<a href="/" class="btn btn-primary special">Back to Main</a>-->
         </div>
     </div>
