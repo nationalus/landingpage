@@ -222,8 +222,8 @@ describe('Donation Model', function() {
                 occupation : 'Reaper of Souls',
                 zipcode : '12345' 
             }, function(err, created) {
-                should.exist(err);
-                should.not.exist(created);
+                should.exist(created);
+                should.not.exist(err);
                 done();
             });
         });
@@ -242,8 +242,8 @@ describe('Donation Model', function() {
                 employer : 'Fate',
                 zipcode : '12345' 
             }, function(err, created) {
-                should.exist(err);
-                should.not.exist(created);
+                should.exist(created);
+                should.not.exist(err);
                 done();
             });
         });
