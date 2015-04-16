@@ -93,6 +93,7 @@ var stripeResponseHandler = function (status, response) {
                 console.log(err);
                 document.querySelector('.payment-errors')
                     .textContent = err.responseJSON.message;
+                document.getElementById('donation-button').disabled = false;
             }
         });
     }
