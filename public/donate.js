@@ -87,6 +87,7 @@ var stripeResponseHandler = function (status, response) {
                 ccYear.style.borderColor = '';
                 cvc.style.borderColor = '';
                 paymentAmount.style.borderColor = '';
+                document.getElementById('donation-button').disabled = false;
             },
             error: function (err) {
                 // Error Logic
