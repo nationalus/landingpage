@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
     babel = require('gulp-babel'),
     sourcemaps = require('gulp-sourcemaps'),
-    browserSync = require('browser-sync');
+    browserSync = require('browser-sync'),
+    prettify = require('gulp-jsbeautifier');
 
 gulp.task('node-dev', function() {
     nodemon({
@@ -75,6 +76,12 @@ gulp.task('landingSync', function() {
         files: ["public/*.html", "public/**/*.css", "public/**/.js"]
     };
     browserSync(config);
+});
+
+gulp.task('jsBeautify', function() {
+    var beautifyTargets = ['./**/*.js'];
+    return gulp.src(beautifyTargets)
+        .pipe(prettify({config: '.jsbeautifyrc', mode: 'VERIFY_ONLY'}));
 });
 
 gulp.task('default', ['node-dev', 'lint']);
