@@ -12,7 +12,8 @@ var gulp = require('gulp'),
     babel = require('gulp-babel'),
     notify = require('gulp-notify'),
     sourcemaps = require('gulp-sourcemaps'),
-    browserSync = require('browser-sync');
+    browserSync = require('browser-sync'),
+    prettify = require('gulp-jsbeautifier');
 
 gulp.task('node-dev', function() {
     nodemon({
@@ -146,7 +147,10 @@ gulp.task('compress',
     }
 );
 
-gulp.task('default', [
-    'lint',
-    'node-dev', 
-]);
+gulp.task('jsBeautify', function() {
+    var beautifyTargets = ['./**/*.js'];
+    return gulp.src(beautifyTargets)
+        .pipe(prettify({config: '.jsbeautifyrc', mode: 'VERIFY_ONLY'}));
+});
+
+gulp.task('default', ['node-dev', 'lint']);
