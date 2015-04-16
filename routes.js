@@ -16,7 +16,8 @@ var form = form(
     field('amount').trim().isInt().toInt()
     .custom(function(amount) {
         if (amount < 3 || amount > 199) {
-            throw new Error("Amount was too small");
+            throw new Error("Donation must be greater than " +
+                "$2 and less than $200");
         }
     }),
     field('email').trim().isEmail().required(),
@@ -25,8 +26,8 @@ var form = form(
     field('street').required().trim().isString(),
     field('first-name').trim().required().isString(),
     field('last-name').trim().required().isString(),
-    field('occupation').trim().isString().required(),
-    field('employer').trim().isString().required(),
+    field('occupation').isString().trim(),
+    field('employer').isString().trim(),
     field('zipCode').trim().required().isString()
     .custom(function(zipcode) {
         if (zipcode.match(/(^\d{5}$)|(^\d{5}-\d{4}$)/)) {

@@ -102,13 +102,28 @@ var stripeResponseHandler = function (status, response) {
 
 $(function () {
     $('#payment-form').submit(function (e) {
-        if (!$.payment.validateCardNumber(ccNum.value) || !$.payment.validateCardCVC(cvc.value) || !$.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
+        if (!$.payment.validateCardNumber(ccNum.value)) {
+            ccNum.style.borderColor = '#ff0000';
+            document.querySelector('.payment-errors')
+                .textContent = 'Please review your credit card information';
+            return false;
+        } else if (!$.payment.validateCardCVC(cvc.value)) {
+            cvc.style.borderColor = '#ff0000';
+            document.querySelector('.payment-errors')
+                .textContent = 'Please review your credit card information';
+            return false;
+        } else if (!$.payment.validateCardExpiry(ccMonth.value, ccYear.value)) {
+            ccMonth.style.borderColor = '#ff0000';
+            ccYear.style.borderColor = '#ff0000';
             document.querySelector('.payment-errors')
                 .textContent = 'Please review your credit card information';
             return false;
         }
         var $form = $(this);
-
+        document.querySelector('.payment-errors')
+            .textContent = '';
+        document.getElementById('payment-success')
+            .textContent = '';
         // Disable the submit button to prevent repeated clicks
         $form.find('button').prop('disabled', true);
 
