@@ -98,8 +98,8 @@ module.exports = {
             logger.debug(req.form);
             res.status(400).json({
                 status : "fail",
-                data : null,
-                message : "Invalid Form"
+                data : req.form.errors,
+                message : req.form.errors ? req.form.errors[0] : "Invalid Form" 
             });
         }
     }
