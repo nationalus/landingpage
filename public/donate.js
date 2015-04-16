@@ -92,7 +92,7 @@ var stripeResponseHandler = function (status, response) {
                 // Error Logic
                 console.log(err);
                 document.querySelector('.payment-errors')
-                    .textContent = err.message;
+                    .textContent = err.responseJSON.message;
             }
         });
     }
