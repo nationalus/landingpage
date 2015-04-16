@@ -1124,6 +1124,10 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
     filter: alpha(opacity=200);
 }
 
+.header-4 a:hover,
+.header-4 a:focus {
+    background-color: #34495e;
+}
 @media (max-width: 768px) {
     .header-4 .background {
         -webkit-background-size: auto 200%;
@@ -1845,7 +1849,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
 
 .crew-3 .members .member:hover .photo-wrapper {
     background-color: #34495e;
-    transform: scale(1.25);
+    transform: scale(1.1);
 }
 
 .crew-3 .members .member:hover .photo {

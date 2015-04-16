@@ -18,8 +18,8 @@ $(function () {
 });
 
 //Scroll animation for donating
- $("button").click(function() {
-    $('html,body').animate({
-        scrollTop: $("#payment-page").offset().top},
-        'slow');
-});
+// $("button").click(function() {
+//    $('html,body').animate({
+//        scrollTop: $("#payment-page").offset().top},
+//        'slow');
+//});
