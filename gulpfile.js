@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     watch = require('gulp-watch'),
     babel = require('gulp-babel'),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    browserSync = require('browser-sync');
 
 gulp.task('node-dev', function() {
     nodemon({
@@ -60,6 +61,20 @@ gulp.task('build', function() {
           .pipe(babel())
           .pipe(sourcemaps.write("."))
           .pipe(gulp.dest('dist'));
+});
+
+gulp.task('landingSync', function() {
+    var config = {
+        watchOptions: {
+            debounceDelay: 500
+        },
+        server: {
+            baseDir: 'public'
+        },
+        https: true,
+        files: ["public/*.html", "public/**/*.css", "public/**/.js"]
+    };
+    browserSync(config);
 });
 
 gulp.task('default', ['node-dev', 'lint']);
