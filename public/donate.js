@@ -108,7 +108,10 @@ $(function () {
             return false;
         }
         var $form = $(this);
-
+        document.querySelector('.payment-errors')
+            .textContent = '';
+        document.getElementById('payment-success')
+            .textContent = '';
         // Disable the submit button to prevent repeated clicks
         $form.find('button').prop('disabled', true);
 
