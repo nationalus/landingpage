@@ -13,7 +13,7 @@ var form = form(
             return token.toString();
         }
     }),
-    field('amount').trim().isInt().toInt()
+    field('amount').trim().isInt("Please enter a whole dollar amount").toInt()
     .custom(function(amount) {
         if (amount < 3 || amount > 199) {
             throw new Error("Donation must be greater than " +
