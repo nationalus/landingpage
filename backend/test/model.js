@@ -1,10 +1,10 @@
 'use strict'
 
-var dbURI = require('../config').testDB,
+var dbURI = require('../src/config').testDB,
     mongoose = require('mongoose'),
     should = require('should'),
     dbCleaner = require('./utils'),
-    donationModel = require('../models/donations').model;
+    donationModel = require('../src/models/donations').model;
 
 describe('Donation Model', function() {
     describe('Create', function() {
@@ -21,7 +21,7 @@ describe('Donation Model', function() {
                 },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
-                zipcode : '12345' 
+                zipcode : '12345'
             }, function(err, created) {
                 should.not.exist(err);
                 should.exist(created);
@@ -46,7 +46,7 @@ describe('Donation Model', function() {
                 },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
-                zipcode : '12345' 
+                zipcode : '12345'
             }, function(err, created) {
                 should.not.exist(created);
                 should.exist(err);
@@ -65,7 +65,7 @@ describe('Donation Model', function() {
                 },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
-                zipcode : '12345' 
+                zipcode : '12345'
             }, function(err, created) {
                 should.exist(err);
                 should.not.exist(created);
@@ -91,7 +91,7 @@ describe('Donation Model', function() {
                 done();
             });
         });
-        it('Attempts to create a donation with invalid email', 
+        it('Attempts to create a donation with invalid email',
             function(done) {
             donationModel.create({
                 name : 'Grim Reaper',
@@ -100,14 +100,14 @@ describe('Donation Model', function() {
                 email : 'grim.reaper',
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
-                zipcode : '12345' 
+                zipcode : '12345'
             }, function(err, created) {
                 should.exist(err);
                 should.not.exist(created);
                 done();
             });
         });
-        it('Attempts to create a donation with invalid email', 
+        it('Attempts to create a donation with invalid email',
             function(done) {
             donationModel.create({
                 amount : 100,
@@ -121,14 +121,14 @@ describe('Donation Model', function() {
                 },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
-                zipcode : '12345' 
+                zipcode : '12345'
             }, function(err, created) {
                 should.exist(err);
                 should.not.exist(created);
                 done();
             });
         });
-        it('Attempts to create a donation with invalid email', 
+        it('Attempts to create a donation with invalid email',
             function(done) {
             donationModel.create({
                 amount : 100,
@@ -142,14 +142,14 @@ describe('Donation Model', function() {
                 },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
-                zipcode : '12345' 
+                zipcode : '12345'
             }, function(err, created) {
                 should.exist(err);
                 should.not.exist(created);
                 done();
             });
         });
-        it('Attempts to create a donation with invalid zipcode', 
+        it('Attempts to create a donation with invalid zipcode',
             function(done) {
             donationModel.create({
                 amount : 100,
@@ -163,14 +163,14 @@ describe('Donation Model', function() {
                 },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
-                zipcode : 'a2345' 
+                zipcode : 'a2345'
             }, function(err, created) {
                 should.exist(err);
                 should.not.exist(created);
                 done();
             });
         });
-        it('Attempts to create a donation with invalid zipcode', 
+        it('Attempts to create a donation with invalid zipcode',
             function(done) {
             donationModel.create({
                 amount : 100,
@@ -184,14 +184,14 @@ describe('Donation Model', function() {
                 },
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
-                zipcode : '2345' 
+                zipcode : '2345'
             }, function(err, created) {
                 should.exist(err);
                 should.not.exist(created);
                 done();
             });
         });
-        it('Attempts to create a donation without address', 
+        it('Attempts to create a donation without address',
             function(done) {
             donationModel.create({
                 amount : 100,
@@ -200,14 +200,14 @@ describe('Donation Model', function() {
                 lastName : 'Reaper',
                 occupation : 'Reaper of Souls',
                 employer : 'Fate',
-                zipcode : '12345' 
+                zipcode : '12345'
             }, function(err, created) {
                 should.exist(err);
                 should.not.exist(created);
                 done();
             });
         });
-        it('Attempts to create a donation without employer', 
+        it('Attempts to create a donation without employer',
             function(done) {
             donationModel.create({
                 amount : 100,
@@ -220,14 +220,14 @@ describe('Donation Model', function() {
                     street : 'Silver Lane'
                 },
                 occupation : 'Reaper of Souls',
-                zipcode : '12345' 
+                zipcode : '12345'
             }, function(err, created) {
                 should.exist(created);
                 should.not.exist(err);
                 done();
             });
         });
-        it('Attempts to create a donation without occupation', 
+        it('Attempts to create a donation without occupation',
             function(done) {
             donationModel.create({
                 amount : 100,
@@ -240,12 +240,12 @@ describe('Donation Model', function() {
                     street : 'Silver Lane'
                 },
                 employer : 'Fate',
-                zipcode : '12345' 
+                zipcode : '12345'
             }, function(err, created) {
                 should.exist(created);
                 should.not.exist(err);
                 done();
             });
         });
-    }); 
+    });
 });
