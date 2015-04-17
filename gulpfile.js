@@ -1,11 +1,16 @@
 var gulp = require('gulp'),
+    combiner = require('stream-combiner2'),
     jshint = require('gulp-jshint'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
+    minifyHTML = require('gulp-minify-html'),
+    minifyCSS = require('gulp-minify-css'),
+    gzip = require('gulp-gzip'),
     nodemon = require('gulp-nodemon'),
     rename = require('gulp-rename'),
     watch = require('gulp-watch'),
     babel = require('gulp-babel'),
+    notify = require('gulp-notify'),
     sourcemaps = require('gulp-sourcemaps'),
     browserSync = require('browser-sync'),
     prettify = require('gulp-jsbeautifier');
@@ -14,7 +19,8 @@ gulp.task('node-dev', function() {
     nodemon({
         script : './bin/www',
         ext : 'js',
-        //tasks : ['lint'],
+        tasks : ['compress'],
+        ignore : 'dist/**/*.js',
         env : { 'NODE_ENV' : 'dev' }
     });
 });
@@ -25,6 +31,13 @@ var jsTargets = ['models/*.js',
                 'app.js',
                 'config.js',
                 'public/**/*.js'];
+
+var jsViews = ['public/**/*.js'];
+var htmlViews = ['public/**/*.html'];
+var cssViews = ['public/**/*.css'];
+var resources = ['public/**/*.jpg',
+                    'public/**/*.ttf',
+                    'public/**/*.woff'];
 
 var lintStreamer = function(glob) {
     return gulp.src(glob)
@@ -56,6 +69,47 @@ gulp.task('build-auto', function() {
     });
 });
 
+gulp.task('compressJS', function () {
+    var combined = combiner.obj([
+        gulp.src(jsViews), 
+        uglify({ 
+            mangle : false
+        }),
+        gzip({
+            append : false
+        }),
+        gulp.dest('dist')
+    ]);
+    combined.on('error', console.error.bind(console));
+    return combined;
+});
+
+gulp.task('compressHTML', function() {
+    var combined = combiner.obj([
+        gulp.src(htmlViews),
+        minifyHTML(),
+        gzip({
+            append : false
+        }),
+        gulp.dest('dist')
+    ]);
+    combined.on('error', console.error.bind(console));
+    return combined;
+});
+
+gulp.task('compressCSS', function() {
+    var combined = combiner.obj([
+        gulp.src(cssViews),
+        minifyCSS(),
+        gzip({
+            append : false
+        }),
+        gulp.dest('dist')
+    ]);
+    combined.on('error', console.error.bind(console));
+    return combined;
+});
+
 gulp.task('build', function() {
     return gulp.src(jsTargets)
           .pipe(sourcemaps.init())
@@ -77,6 +131,21 @@ gulp.task('landingSync', function() {
     };
     browserSync(config);
 });
+
+gulp.task('compress', 
+    ['compressJS', 'compressHTML', 'compressCSS'],
+    function() {
+        var combined = combiner.obj([
+            gulp.src(resources),
+            gzip({
+                append : false
+            }),
+            gulp.dest('dist')
+        ]);
+        combined.on('error', console.error.bind(console));
+        return combined;
+    }
+);
 
 gulp.task('jsBeautify', function() {
     var beautifyTargets = ['./**/*.js'];

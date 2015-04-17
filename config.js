@@ -18,6 +18,8 @@ module.exports = function() {
             'sk_test_pnRBYcLcnwtEjDB5NEvrwOnm',
         port : process.env.PORT || '8443',
         dbURI : process.env.MONGOLAB_URI || 'mongodb://localhost/landing-test',
+        encoding : process.env.NODE_ENV === 'dev' ? 'none' : 'gzip',
+        root : process.env.NODE_ENV === 'dev' ? 'public' : 'dist',
         logger : logger
     };
     return config;

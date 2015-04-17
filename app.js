@@ -19,31 +19,20 @@ var app = express();
 mongoose.connect(config.dbURI);
 
 //Middleware
-app.use(compression({
-    filter : function(req, res, next) {
-        if (req.headers['x-no-compression']) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-}));
 if (process.env.NODE_ENV === 'production') {
     app.use(enforce.HTTPS(true));
-    app.use(minify({
-        js_match : /javascript/,
-        css_match : /css/,
-        sass_match : /scss/,
-        less_match : /less/,
-        stylus_match : /stylus/,
-        coffee_match : /coffeescript/,
-        cache : false 
-    }));
 }
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, config.root), {
+    setHeaders : function(res) {
+        res.set({
+            'Content-Encoding' : config.encoding
+        })
+    }
+}));
 
 app.use(routes);
 
