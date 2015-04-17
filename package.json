@@ -29,9 +29,11 @@
     "node": "0.12.x"
   },
   "devDependencies": {
+    "browser-sync": "^2.6.4",
     "gulp": "^3.8.11",
     "gulp-babel": "^5.1.0",
     "gulp-concat": "^2.5.2",
+    "gulp-jsbeautifier": "0.0.8",
     "gulp-jshint": "^1.10.0",
     "gulp-nodemon": "^2.0.2",
     "gulp-rename": "^1.2.2",

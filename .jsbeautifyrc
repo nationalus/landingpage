@@ -1,0 +1,9 @@
+{
+    "indentChar": " ",
+    "indentSize": 4,
+    "eol": "\n",
+    "indentLevel": 0,
+    "spaceAfterAnonFunction": true,
+    "spaceBeforeConditional": true,
+    "endWithNewLine": true
+}
