@@ -1,6 +1,6 @@
 'use strict'
 
-var config = require('../config')(),
+var config = require('../src/config')(),
     mongoose = require('mongoose');
 
 before(function(done) {
@@ -48,4 +48,3 @@ beforeEach(function(done) {
 afterEach(function(done) {
     return done();
 });
-
