@@ -44,12 +44,10 @@ var DonationSchema = new Schema({
     employer : {
         type : String,
         maxlength : 256,
-        required : true
     },
     occupation : {
         type : String,
         maxlength : 256,
-        required : true
     },
     address : {
         street : {
