@@ -9,6 +9,7 @@ var express = require('express'),
     config = require('./config')(),
     compression = require('compression'),
     enforce = require('express-sslify'),
+    helmet = require('helmet'),
     minify = require('express-minify'),
     fs = require('fs'),
     logger = config.logger;
@@ -19,6 +20,7 @@ var app = express();
 mongoose.connect(config.dbURI);
 
 //Middleware
+app.use(helmet.hidePoweredBy());
 if (process.env.NODE_ENV === 'production') {
     app.use(enforce.HTTPS(true));
 }
