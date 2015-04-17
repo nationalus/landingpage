@@ -158,6 +158,7 @@
                                 <span>Card Number</span>
                                 <input type="number" size="50" data-stripe="number" class="form-control flat"
                                        id="cc-num" required/>
+                            No spaces or dashes
                             </label>
                         </div>
                         <span>Expiration (MM/YYYY)</span>
@@ -227,13 +228,6 @@
                         </div>
                     </div>
                 </div>
-                <h3><span class="payment-errors" style="color:red;"></span></h3>
-                <h3><span id="payment-success" style="color:white;"></span></h3>
-                <button type="submit" class="btn btn-primary special">Submit Secure Donation</button>
-                <br/>
-                <a href="https://stripe.com/help/security" target="_blank">
-                                    <img src="startup/common-files/img/outline.png" alt=""/>
-                                </a>
                 <div class="hero-unit">
 
                     <!--<h4>Terms & Conditions</h4>-->
@@ -260,14 +254,15 @@
                         year.
                         Contributions or gifts are not tax deductible.
                     </div>
-                </div>
-                <h3><span class="payment-errors" style="color:red;"></span></h3>
-
-                <h3><span id="payment-success" style="color:white;"></span></h3>
-                <br/>
-                <br/>
-                <button type="submit" class="btn btn-primary special" id="donation-button">Submit Secure Donation</button>
-
+                  </div>
+            <h3><span class="payment-errors" style="color:red;"></span></h3>
+            <h3><span id="payment-success" style="color:white;"></span></h3>
+            <button type="submit" class="btn btn-primary special" id="donation-button">Submit Secure Donation</button>
+            <br>
+            <br>
+            <a href="https://stripe.com/help/security" target="_blank">
+                                <img src="startup/common-files/img/outline.png" alt=""/>
+                            </a>
             </form>
             <!--<a href="/" class="btn btn-primary special">Back to Main</a>-->
         </div>
