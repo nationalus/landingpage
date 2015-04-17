@@ -95,6 +95,10 @@ var stripeResponseHandler = function (status, response) {
                 document.querySelector('.payment-errors')
                     .textContent = err.responseJSON.message;
                 document.getElementById('donation-button').disabled = false;
+                if (err.responseJSON.message === 
+                    'Please enter a whole dollar amount') {
+                    paymentAmount.style.borderColor = '#ff0000';
+                }
             }
         });
     }
