@@ -36,6 +36,7 @@ var htmlViews = ['public/**/*.html'];
 var cssViews = ['public/**/*.css'];
 var resources = ['public/**/*.jpg',
     'public/**/*.ttf',
+    'public/**/*.png',
     'public/**/*.woff'];
 
 var lintStreamer = function(glob) {
@@ -152,4 +153,4 @@ gulp.task('jsBeautify', function() {
         .pipe(prettify({config: '../.jsbeautifyrc', mode: 'VERIFY_ONLY'}));
 });
 
-gulp.task('default', ['node-dev', 'lint']);
+gulp.task('default', ['node-dev', 'lint', 'compress']);
