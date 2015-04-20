@@ -17,33 +17,32 @@ var gulp = require('gulp'),
 
 gulp.task('node-dev', function() {
     nodemon({
-        script : './bin/www',
-        ext : 'js',
-        tasks : ['compress'],
-        ignore : 'dist/**/*.js',
-        env : { 'NODE_ENV' : 'dev' }
+        script: 'src/bin/www',
+        ext: 'js',
+        tasks: ['compress'],
+        ignore: 'dist/**/*.js',
+        env: { 'NODE_ENV': 'dev' }
     });
 });
 
-var jsTargets = ['models/*.js',
-                'controllers/**/*.js',
-                'modal-page/**/*.js',
-                'app.js',
-                'config.js',
-                'public/**/*.js'];
+var jsTargets = ['src/models/*.js',
+    'src/controllers/**/*.js',
+    'src/app.js',
+    'src/config.js',
+    'public/**/*.js'];
 
 var jsViews = ['public/**/*.js'];
 var htmlViews = ['public/**/*.html'];
 var cssViews = ['public/**/*.css'];
 var resources = ['public/**/*.jpg',
-                    'public/**/*.ttf',
-                    'public/**/*.png',
-                    'public/**/*.woff'];
+    'public/**/*.ttf',
+    'public/**/*.png',
+    'public/**/*.woff'];
 
 var lintStreamer = function(glob) {
     return gulp.src(glob)
-      .pipe(jshint({node: true}))
-      .pipe(jshint.reporter('default'));
+        .pipe(jshint({node: true}))
+        .pipe(jshint.reporter('default'));
 };
 
 //This lints all files in jsTargets
@@ -53,9 +52,9 @@ gulp.task('lint', function() {
 
 //This lints the changing files in jsTargets as they change
 gulp.task('lint-auto', function() {
-  watch(jsTargets, function(file) {
-      return lintStreamer(file.path);
-  });
+    watch(jsTargets, function(file) {
+        return lintStreamer(file.path);
+    });
 });
 
 //This transpiles es6 to es5 as the files change
@@ -63,17 +62,17 @@ gulp.task('lint-auto', function() {
 gulp.task('build-auto', function() {
     watch(jsTargets, function(file) {
         return gulp.src(file.path)
-          .pipe(sourcemaps.init())
-          .pipe(babel())
-          .pipe(sourcemaps.write("."))
-          .pipe(gulp.dest('dist'));
+            .pipe(sourcemaps.init())
+            .pipe(babel())
+            .pipe(sourcemaps.write("."))
+            .pipe(gulp.dest('dist'));
     });
 });
 
 gulp.task('compressJS', function () {
     var combined = combiner.obj([
-        gulp.src(jsViews), 
-        uglify({ 
+        gulp.src(jsViews),
+        uglify({
             mangle : false
         }),
         gzip({
@@ -113,10 +112,10 @@ gulp.task('compressCSS', function() {
 
 gulp.task('build', function() {
     return gulp.src(jsTargets)
-          .pipe(sourcemaps.init())
-          .pipe(babel())
-          .pipe(sourcemaps.write("."))
-          .pipe(gulp.dest('dist'));
+        .pipe(sourcemaps.init())
+        .pipe(babel())
+        .pipe(sourcemaps.write("."))
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('landingSync', function() {
@@ -133,7 +132,7 @@ gulp.task('landingSync', function() {
     browserSync(config);
 });
 
-gulp.task('compress', 
+gulp.task('compress',
     ['compressJS', 'compressHTML', 'compressCSS'],
     function() {
         var combined = combiner.obj([
@@ -151,7 +150,7 @@ gulp.task('compress',
 gulp.task('jsBeautify', function() {
     var beautifyTargets = ['./**/*.js'];
     return gulp.src(beautifyTargets)
-        .pipe(prettify({config: '.jsbeautifyrc', mode: 'VERIFY_ONLY'}));
+        .pipe(prettify({config: '../.jsbeautifyrc', mode: 'VERIFY_ONLY'}));
 });
 
 gulp.task('default', ['node-dev', 'lint', 'compress']);
