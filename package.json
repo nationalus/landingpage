@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./backend/bin/www",
+    "start": "node ./backend/src/bin/www",
     "test": "node_modules/.bin/mocha",
     "gulp": "node_modules/.bin/gulp",
     "start-mongo": "mongod --config /usr/local/etc/mongod.conf &",
