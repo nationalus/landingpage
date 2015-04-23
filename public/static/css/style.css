@@ -2521,7 +2521,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
     display: none;
 }
 
-.crew-3 .members .overlay {
+/*.crew-3 .members .overlay {
     display: block;
     position: absolute;
     width: 100%;
@@ -2537,7 +2537,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
     -moz-transition: opacity 0.4s;
     -o-transition: opacity 0.4s;
     transition: opacity 0.4s;
-}
+}*/
 
 .crew-3 .members .overlay [class*="fui-"] {
     font-size: 46px;
@@ -2693,7 +2693,7 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   position: absolute;
   top: -17px;
   left: -40px;*/
-}
+/*}*/
 @media (max-width: 767px) {
   .blog-3 .quote {
     margin-left: 40px;
